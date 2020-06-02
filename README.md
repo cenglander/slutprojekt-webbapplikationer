@@ -1,7 +1,7 @@
 # slutprojekt-webbapplikationer
 
-##Kung-Fu Pirates!
-###Charlotte E, Joel S, Ivan J
+## Kung-Fu Pirates!
+### Charlotte E, Joel S, Ivan J
 
 ## Project setup
 ```

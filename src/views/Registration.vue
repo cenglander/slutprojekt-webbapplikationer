@@ -1,5 +1,6 @@
 <template>
     <div class="registration-container">
+        <p>Registration</p>
         <form @submit.prevent="createUser">
         <input type="text" v-model="user.email" placeholder="email">
         <input type="text" v-model="user.password" placeholder="password">
@@ -33,12 +34,16 @@ data() {
 },
 methods: {
     createUser() {
-        this.$store.dispatch('', this.user)
+        this.$store.dispatch('createUser', this.user);
     }
 }
 }
 </script>
 
-<style>
-
+<style scoped>
+.registration-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>

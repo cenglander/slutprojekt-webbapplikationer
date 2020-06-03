@@ -4,7 +4,13 @@
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  created() {
+    this.$store.dispatch('loadProductList')
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

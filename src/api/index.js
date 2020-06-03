@@ -26,7 +26,7 @@ async function logInUser(email, pass) {
 }
 
 async function registerUser(user) {
-    const response = await fetch(URL + '/register/', {
+    let response = await fetch(URL + '/register/', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -114,4 +114,4 @@ async function addOrder(token, order) {
     return response.json()
 }
 
-export default {getAllProducts, getSingleproduct, logInUser, registerUser, createProduct, updateProduct, deleteProduct, getAllOrders, addOrder, test}
+export default {getAllProducts, getSingleproduct, logInUser, registerUser, createProduct, updateProduct, deleteProduct, getAllOrders, addOrder}

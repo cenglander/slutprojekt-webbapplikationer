@@ -16,7 +16,7 @@
                     <h5>{{ product.shortDesc }}</h5>
                     <h5>{{ product.price }}</h5>    
                 </div>
-                <button class="addToCart"
+                <button class="add-to-cart"
                     @click="addToCart(product)"
                     >Add to cart
                 </button>
@@ -73,6 +73,8 @@ export default {
                 img {
                     width: 15rem;
                 }
+                // .add-to-cart {
+                // }
             }   
         }  
     }

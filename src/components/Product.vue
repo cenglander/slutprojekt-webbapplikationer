@@ -8,8 +8,8 @@
             <h4>{{ selectedProduct.shortDesc }}</h4>
             <p>{{ selectedProduct.longDesc }}</p>
             <p>{{ selectedProduct.price }} SEK</p>
-            <button
-                >Add to cart</button>
+            <button class="add-to-cart"
+                @click="addToCart(selectedProduct)">Add to cart</button>
         </div>
     </div>
 </template>
@@ -25,6 +25,11 @@ export default {
     methods: {
         unSelectProduct() {
             this.$store.commit('setSelectedProduct', null)
+        },
+        addToCart(product) {
+            this.$store.commit('addProductToCart', product)
+            console.log("cart: ")
+            console.log(this.$store.state.productsInCart)
         },
     }
 }
@@ -44,10 +49,15 @@ export default {
             img {
                 height: 25rem;
             }
-            .close {
+            button {
                 width: 5rem;
                 height: 5rem;
             }
+            // .close {
+            //     //put in right corner?
+            // }
+            // .add-to-cart {
+            // }
         }
     }
 </style>

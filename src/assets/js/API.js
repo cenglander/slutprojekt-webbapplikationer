@@ -10,19 +10,19 @@ function getAllProducts() {
         },
         {
             _id: '45ynwqerbsnrtuw',
-            title: 'Gretas Fury',
-            price: 999,
+            title: 'Awesome',
+            price: 899,
             shortDesc: 'Unisex',
             longDesc: 'Skate ipsum dolor sit amet...',
-            imgFile: 'skateboard-greta.png'
+            imgFile: 'skateboard-generic.png'
         },
         {
             _id: '3asdngfnABnv',
-            title: 'Gretas Fury',
-            price: 999,
+            title: 'Hiphop',
+            price: 799,
             shortDesc: 'Unisex',
             longDesc: 'Skate ipsum dolor sit amet...',
-            imgFile: 'skateboard-greta.png'
+            imgFile: 'wheel-rocket.png'
         } 
     ]
 }

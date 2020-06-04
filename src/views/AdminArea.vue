@@ -1,18 +1,13 @@
 <template>
   <div class="admin-area-container">
-<<<<<<< HEAD
     <Header/>
-    <div class="login">
-=======
-    <Header />
     <!-- <div class="login">
->>>>>>> 8bb4fc1eb40382c85e0376202cde02b4c20cace5
       <p>Login</p>
       <input type="email" v-model="admin.email" placeholder="email" />
       <input type="password" v-model="admin.password" placeholder="password" />
       <button v-on:click="loginAdmin">login</button>
       <p>User: {{loggedIn}}</p>
-    </div>-->
+    </div> -->
     <div class="user-container" v-if="getCurrentUser != null">
       <p>User: {{getCurrentUser.name}}</p>
       <p>Role: {{getCurrentUser.role}}</p>

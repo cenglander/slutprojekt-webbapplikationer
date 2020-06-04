@@ -2,7 +2,7 @@
 
     <div class="cart-button"
         @click="showHideCart()">
-        <p>Cart</p>
+        <p>Cart: {{ amountOfProducts }}</p>
     </div>
 
 </template>
@@ -13,9 +13,15 @@ export default {
     data: () => ({
         
     }),
+    computed: {
+        amountOfProducts() {
+            console.log(this.$store.state.productsInCart.length)
+            return this.$store.state.productsInCart.length
+        }
+    },
     methods: {
         showHideCart() {
-
+            console.log("hej")
         }
     }
 }
@@ -23,8 +29,12 @@ export default {
 
 <style scoped lang="scss">
     div .cart-button {
-        width: 2rem;
-        height: 1rem;
+        width: 4rem;
+        height: 4rem;
         background: chocolate;
+        border-radius: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

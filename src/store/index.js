@@ -133,7 +133,7 @@ export default new Vuex.Store({
 
     async getAllOrders() {
       console.log('in getAllOrders in actions');
-      let token = JSON.parse(sessionStorage.getItem('sinus-token'))
+      let token = sessionStorage.getItem('sinus-token')
       let response = await API.getAllOrders(token)
       return response
     },
@@ -141,7 +141,7 @@ export default new Vuex.Store({
     async addOrder(context, order) {
       console.log('in addOrder in actions');
       
-      let token = JSON.parse(sessionStorage.getItem('sinus-token'))
+      let token = sessionStorage.getItem('sinus-token')
       let response = await API.addOrder(token, order)
       return response
     },

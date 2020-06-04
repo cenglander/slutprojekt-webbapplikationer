@@ -1,5 +1,6 @@
 <template>
     <div class="registration-container">
+        <Header/>
         <p>Registration</p>
         <form @submit.prevent="createUser">
         <input type="text" v-model="user.email" placeholder="email">

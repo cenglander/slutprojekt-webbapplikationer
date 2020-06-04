@@ -11,6 +11,9 @@
                 <router-link :to="'/adminarea'" v-if="isAdmin">
                     <li>Admin Area</li>
                 </router-link>
+                <li>
+                    <CartButton />
+                </li>
             </ul>
         </div>
         <div class="login-button" @click="showLogIn">
@@ -22,11 +25,13 @@
 
 <script>
 import LogIn from '@/components/LogIn'
+import CartButton from '@/components/CartButton'
 export default {
     name: 'Header',
     
     components: {
-        LogIn
+        LogIn,
+        CartButton,
     },
 
     methods:{

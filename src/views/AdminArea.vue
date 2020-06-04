@@ -1,5 +1,6 @@
 <template>
   <div class="admin-area-container">
+    <Header/>
     <div class="login">
       <p>Login</p>
       <input type="email" v-model="admin.email" placeholder="email" />

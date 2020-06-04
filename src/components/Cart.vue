@@ -1,13 +1,17 @@
 <template>
-  
+
+    <div class="cart-container">
+
+    </div>
+
 </template>
 
 <script>
 export default {
-name: 'Cart'
+    name: 'Cart'
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

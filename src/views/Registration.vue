@@ -1,10 +1,6 @@
 <template>
     <div class="registration-container">
-<<<<<<< HEAD
-        <Header/>
-=======
         <Header />
->>>>>>> bdafe00d581e6d76eecd5a54f449bd3464ed0475
         <p>Registration</p>
         <div class="create-account-container">
             <input type="email" v-model="user.email" placeholder="email">

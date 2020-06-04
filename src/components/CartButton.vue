@@ -11,7 +11,8 @@
 export default {
     name: 'CartButton',
     data: () => ({
-        showCart: this.$store.state.showCart
+        // showTheCart: this.$store.state.showCart
+        showTheCart: false
     }),
     computed: {
         amountOfProducts() {
@@ -20,8 +21,20 @@ export default {
         },
     },
     methods: {
+        unSelectProduct() {
+            this.$store.commit('setSelectedProduct', null)
+        },
         showHideCart() {
-            console.log(this.showCart)
+            this.showTheCart = this.$store.state.showCart
+            this.showTheCart = !this.showTheCart
+            this.$store.commit('changeCartVisibility', this.showTheCart)
+            if(this.showTheCart) {
+                this.unSelectProduct()
+                console.log('in cartbutton - closing product when opening cart')
+                this.$emit("false")
+            } else {
+                this.$emit("true")
+            }
         },
     },
 }

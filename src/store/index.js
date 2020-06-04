@@ -60,7 +60,11 @@ export default new Vuex.Store({
     setSelectedProduct(state, payload) {
       console.log('setting selcted product');
       state.selectedProduct = payload
-    }
+    },
+    changeCartVisibility(state, payload) {
+      console.log('mutation - changing cart visibility')
+      state.showCart = payload
+    },
   },
   actions: {
 

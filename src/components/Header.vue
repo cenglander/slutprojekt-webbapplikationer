@@ -48,17 +48,39 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
 .header-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    .nav {
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            li {
+                margin: 1rem;
+            }
+        }
+    }
+    .login-button {
+        align-self: center;
+        
+    }
 }
-.login-button {
-    justify-self: flex-end;
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  text-decoration: none;
 }
 </style>

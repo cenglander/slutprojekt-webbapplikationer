@@ -1,23 +1,27 @@
 <template>
     <div class="registration-container">
+        <Header />
         <p>Registration</p>
-        <form @submit.prevent="createUser">
-        <input type="text" v-model="user.email" placeholder="email">
-        <input type="text" v-model="user.password" placeholder="password">
-        <input type="text" v-model="user.repeatPassword" placeholder="repeatPassword">
-        <input type="text" v-model="user.name" placeholder="name">
-        <input type="text" v-model="user.adress" placeholder="adress">
-        <input type="text" v-model="user.street" placeholder="street">
-        <input type="text" v-model="user.city" placeholder="city">
-        <input type="text" v-model="user.zip" placeholder="zip">
-        <input type="submit">
-    </form>
+        <div class="create-account-container">
+            <input type="email" v-model="user.email" placeholder="email">
+            <input type="password" v-model="user.password" placeholder="password">
+            <input type="password" v-model="user.repeatPassword" placeholder="repeatPassword">
+            <input type="text" v-model="user.name" placeholder="name">
+            <input type="text" v-model="user.adress.street" placeholder="street">
+            <input type="text" v-model="user.adress.city" placeholder="city">
+            <input type="numbers" v-model="user.adress.zip" placeholder="zip">
+            <button v-on:click="createUser">create user</button>
+        </div>
     </div>
 </template>
 
 <script>
+import Header from "@/components/Header";
 export default {
 name: 'Registration',
+components: {
+    Header
+},
 data() {
     return {
         user: {
@@ -25,23 +29,24 @@ data() {
             password: "",
             repeatPassword: "",
             name: "",
-            adress: "",
-            street: "",
-            city: "",
-            zip: ""
+            adress: {
+                street: "",
+                city: "",
+                zip: ""
+            }
         }
     }
 },
 methods: {
     createUser() {
-        this.$store.dispatch('createUser', this.user);
+        this.$store.dispatch('registerUser', this.user);
     }
 }
 }
 </script>
 
 <style scoped>
-.registration-container form {
+.create-account-container {
     display: flex;
     flex-direction: column;
     align-items: center;

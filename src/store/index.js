@@ -83,9 +83,8 @@ export default new Vuex.Store({
       }
     },
 
-    async registerUser(userToRegister) {
+    async registerUser(_, userToRegister) {
       console.log('in register user in actions');
-      
       let response = await API.registerUser(userToRegister)
       return response.status
     },

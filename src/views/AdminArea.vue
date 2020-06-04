@@ -14,13 +14,29 @@
         <input type="number" v-model="product.price" placeholder="price" />
         <input type="text" v-model="product.shortDesc" placeholder="Short description" />
         <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
-        <input type="file" id="img" name="img" accept="image/*" />
         <input type="submit" />
       </form>
     </div>
-    <div class="product-list" v-for="product in getProductList" v-bind:key="product._id">
-      <p>{{product}}</p>
+    <div class="product-list">
+      <ul>
+        <li v-for="product in getProductList" v-bind:key="product._id">
+          <p>{{product.title}} {{product._id}}</p>
+          <button @click="toggleUpdate">update</button>
+          <button @click="deleteProduct(product)">delete</button>
+          <div class="updateProduct" v-if="activateUpdateMode">
+            <p>Update Product</p>
+            <form @submit.prevent="updateProduct">
+              <input type="text" v-model="product.title" placeholder="title" />
+              <input type="number" v-model="product.price" placeholder="price" />
+              <input type="text" v-model="product.shortDesc" placeholder="Short description" />
+              <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
+              <input type="submit" />
+            </form>
+          </div>
+        </li>
+      </ul>
     </div>
+
     <p></p>
   </div>
 </template>
@@ -43,27 +59,31 @@ export default {
         price: 0,
         shortDesc: "",
         longDesc: "",
-        imgFile: ""
-      }
+        imgFile: "skateboard-generic.png"
+      },
+      activateUpdateMode: false
     };
   },
   computed: {
     getProductList() {
-        return this.$store.state.productList;
+      return this.$store.state.productList;
     }
   },
   methods: {
     loginAdmin() {
-      this.$store.commit("setUser", this.admin);
+      this.$store.dispatch("logInUser", this.admin);
     },
     createProduct() {
-      this.$store.context("createProduct", this.product);
+      this.$store.dispatch("createProduct", this.product);
     },
-    updateProduct() {
-        this.$store.context("updateProduct", this.product);
+    updateProduct(product) {
+      this.$store.dispatch("updateProduct", product);
     },
-    deleteProduct() {
-        this.$store.context("deleteProduct", this.product);
+    deleteProduct(product) {
+      this.$store.dispatch("deleteProduct", product);
+    },
+    toggleUpdate() {
+      this.activateUpdateMode = !this.activateUpdateMode;
     }
   }
 };
@@ -86,5 +106,8 @@ export default {
 }
 .product-list {
   border: 1px solid black;
+}
+img {
+  width: 10%;
 }
 </style>

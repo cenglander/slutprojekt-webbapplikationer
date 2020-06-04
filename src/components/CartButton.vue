@@ -11,19 +11,19 @@
 export default {
     name: 'CartButton',
     data: () => ({
-        
+        showCart: this.$store.state.showCart
     }),
     computed: {
         amountOfProducts() {
-            console.log(this.$store.state.productsInCart.length)
+            console.log("amount of products")
             return this.$store.state.productsInCart.length
-        }
+        },
     },
     methods: {
         showHideCart() {
-            console.log("hej")
-        }
-    }
+            console.log(this.showCart)
+        },
+    },
 }
 </script>
 

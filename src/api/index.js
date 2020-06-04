@@ -37,20 +37,10 @@ async function registerUser(user) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            email: user.email,
-            password: user.password,
-            repeatPassword: user.repeatPassword,
-            name: user.name,
-            adress: {
-                street: user.street,
-                city: user.city,
-                zip: user.zip
-            }
-        })
+        body: JSON.stringify(user)
     })
-    const data = await response.json()
-    return data
+    const data = await response
+    return data.json()
 }
 
 async function getAllProducts() {

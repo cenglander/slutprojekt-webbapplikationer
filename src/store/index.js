@@ -102,8 +102,7 @@ export default new Vuex.Store({
 
     async createProduct(context, product) {
       console.log('in createProduct in actions');
-      
-      let token = JSON.parse(sessionStorage.getItem('sinus-token'))
+      let token = sessionStorage.getItem('sinus-token')
       let response = API.createProduct(token, product)
       if (response.status == 200) {
         context.dispatch('loadProductList')
@@ -113,7 +112,7 @@ export default new Vuex.Store({
 
     async updateProduct(context, product) {
       console.log('in updateProduct in actions');
-      let token = JSON.parse(sessionStorage.getItem('sinus-token'))
+      let token = sessionStorage.getItem('sinus-token')
       let response = API.updateProduct(token, product)
       if (response.status == 200) {
         context.dispatch('loadProductList')
@@ -123,7 +122,7 @@ export default new Vuex.Store({
 
     async deleteProduct(context, product) {
       console.log('in deleteProduct in actions');
-      let token = JSON.parse(sessionStorage.getItem('sinus-token'))
+      let token = sessionStorage.getItem('sinus-token')
       let response = API.deleteProduct(token, product)
       if (response.status == 200) {
         context.dispatch('loadProductList')

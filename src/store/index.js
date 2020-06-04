@@ -44,7 +44,7 @@ export default new Vuex.Store({
     },
     setUser(state, payload) {
       console.log('setting user');
-      state.user = payload
+      state.currentUser = payload
     },
     setOrder(state, payload) {
       console.log('setting order...');
@@ -70,8 +70,10 @@ export default new Vuex.Store({
       context.commit('setProductList', products)
     },
 
-    async logInUser(context, email, pass) {
-      let response = await API.logInUser(email, pass)
+    async logInUser(context, payload) {
+      console.log('in logInUser action');
+      
+      let response = await API.logInUser(payload.email, payload.pass)
       if(response.status == 200){
         sessionStorage.setItem('sinus-token', response.token)
         context.commit('setUser', response.user)
@@ -82,11 +84,15 @@ export default new Vuex.Store({
     },
 
     async registerUser(userToRegister) {
+      console.log('in register user in actions');
+      
       let response = await API.registerUser(userToRegister)
       return response.status
     },
 
     async getSingleproduct(context, productId) {
+      console.log('in getSingleProduct in actions');
+      
       let response = await API.getSingleproduct(productId)
       if (response.status == 200){
         context.commit('setSelectedProduct', response)
@@ -95,6 +101,8 @@ export default new Vuex.Store({
     },
 
     async createProduct(context, product) {
+      console.log('in createProduct in actions');
+      
       let token = JSON.parse(sessionStorage.getItem('sinus-token'))
       let response = API.createProduct(token, product)
       if (response.status == 200) {
@@ -104,6 +112,7 @@ export default new Vuex.Store({
     },
 
     async updateProduct(context, product) {
+      console.log('in updateProduct in actions');
       let token = JSON.parse(sessionStorage.getItem('sinus-token'))
       let response = API.updateProduct(token, product)
       if (response.status == 200) {
@@ -113,6 +122,7 @@ export default new Vuex.Store({
     },
 
     async deleteProduct(context, product) {
+      console.log('in deleteProduct in actions');
       let token = JSON.parse(sessionStorage.getItem('sinus-token'))
       let response = API.deleteProduct(token, product)
       if (response.status == 200) {
@@ -122,12 +132,15 @@ export default new Vuex.Store({
     },
 
     async getAllOrders() {
+      console.log('in getAllOrders in actions');
       let token = JSON.parse(sessionStorage.getItem('sinus-token'))
       let response = await API.getAllOrders(token)
       return response
     },
 
     async addOrder(context, order) {
+      console.log('in addOrder in actions');
+      
       let token = JSON.parse(sessionStorage.getItem('sinus-token'))
       let response = await API.addOrder(token, order)
       return response

@@ -10,19 +10,25 @@ const URL=document.location.protocol+'//'+document.location.host+'/api'
 // /api/orders	GET	Returnerar en lista på samtliga ordrar för admins, och ägda orders för inloggad användare.
 // /api/orders	POST	Skapar en ny order, se order-modell.
 
-async function logInUser(email, pass) {
-    let respone = await fetch(URL + '/auth/', {
+async function logInUser(emailToSend, pass) {
+    console.log('in logInUser in API, email=' + emailToSend+", password=" + pass);
+    
+    let response = await fetch(URL + '/auth/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body : JSON.stringify({    
-            email : email,
+            email : emailToSend,
             password : pass
         })
     })
-    let tokenAndUser = await respone.json()  // returns status 403 for wrong user
-    return tokenAndUser                     // returns {token: and user:}
+    
+    let status = response.status
+    
+    let tokenAndUser = await response.json() // returns status 403 for wrong user
+    tokenAndUser.status = status
+    return tokenAndUser                      // returns {token: and user:}
 }
 
 async function registerUser(user) {

@@ -1,5 +1,6 @@
 <template>
     <div class="product-list-container">
+        <Header/>
         <h1>Products</h1>
         <Product v-if="getSelectedProduct!=null"
         
@@ -27,10 +28,13 @@
 
 <script>
 import Product from '@/components/Product.vue'
+import Header from '@/components/Header'
+
 export default {
     name: 'ProductList',
     components: {
         Product,
+        Header
     },
     computed: {
         getProductList() {

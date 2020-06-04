@@ -41,6 +41,7 @@ export default {
             let response = null
             if (this.email !== `` && this.password !== ``) { // there are both email and password
                 response = await this.$store.dispatch('logInUser', { email : this.email, pass : this.password})
+                this.closeLogin()
             } else if (!this.email) {
                 this.noEmailInput = true
             } else if (!this.password) {

@@ -6,6 +6,8 @@
             <ul>
                 <li v-for="(item, index) in getProductsInCart"
                     :key="index">
+                    <button @click="addToCart(item.product)">Add</button>
+                    <button @click="removeFromCart(item.product)">Remove</button>
                     <p>{{ item.product.title }}
                         --- Styckpris: {{ item.product.price }}--- Antal: {{ item.amount }}</p>
                 </li>
@@ -26,6 +28,13 @@ export default {
         },
     },
     methods: {
+        addToCart(product) {
+            this.$store.commit('addProductToCart', product)
+        },
+        removeFromCart(product) {
+            this.$store.commit('removeProductFromCart', product)
+            console.log("not yet implemented i store")
+        },
         // addToCart(product) {
         //     this.$store.commit('addProductToCart', product)
         //     console.log("i cart")

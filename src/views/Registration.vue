@@ -39,7 +39,9 @@ data() {
 },
 methods: {
     createUser() {
-        this.$store.dispatch('registerUser', this.user);
+        this.$store.dispatch('registerUser', this.user)
+        this.$store.commit('changeCartVisibility', false)
+        this.$store.commit('changeLoginVisibility', false)
     }
 }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="login-container" :class="{ noDisplay : showLogIn }">
+    <div class="login-container" v-if="!showLogIn">
         <div class="logInForm" v-if="!logedIn">
             <h3>Login</h3>
             <form @submit.prevent="submit">
@@ -106,7 +106,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .noDisplay {
     display: none;
 }

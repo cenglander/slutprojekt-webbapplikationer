@@ -54,10 +54,10 @@ export default new Vuex.Store({
         state.productsInCart = JSON.parse(sessionStorage.getItem('sinus-cart'))
       }
       console.log('session restored');
-      console.log(state.currentUser);
-      console.log(state.productsInCart);
     }, 
     saveSession(state) {
+      console.log('saving session');
+      
       sessionStorage.setItem('sinus-user', JSON.stringify(state.currentUser))
       sessionStorage.setItem('sinus-cart', JSON.stringify(state.productsInCart))
     },
@@ -116,7 +116,13 @@ export default new Vuex.Store({
       console.log('mutation - changing cart visibility')
       state.showCart = payload
     },
+    changeLoginVisibility(state, payload) {
+      state.showLogIn = payload
+    }
   },
+
+
+
   actions: {
 
     async loadProductList(context) {

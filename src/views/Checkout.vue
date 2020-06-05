@@ -1,5 +1,6 @@
 <template>
     <div class="checkout-container">
+        <Header/>
         
     </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
     <div class="product-list-container">
-        <Header/>
-        <h1>Products</h1>
-        <Product v-if="getSelectedProduct!=null"
         
-        />
+        <Header/>
+        <Cart v-if="getCartVisibility" />
+        <h1>Products</h1>
+        <Product v-if="getSelectedProduct!=null" />
         <ul>
             <li v-for='product in getProductList'
                 :key="product._id">
@@ -29,12 +29,14 @@
 <script>
 import Product from '@/components/Product.vue'
 import Header from '@/components/Header'
+import Cart from '@/components/Cart'
 
 export default {
     name: 'ProductList',
     components: {
         Product,
-        Header
+        Header,
+        Cart,
     },
     computed: {
         getProductList() {
@@ -42,7 +44,10 @@ export default {
         },
         getSelectedProduct() {
             return this.$store.state.selectedProduct
-        }
+        },
+        getCartVisibility() {
+            return this.$store.state.showCart
+        },
     },
     methods: {
         addToCart(product) {

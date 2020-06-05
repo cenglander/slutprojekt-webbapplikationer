@@ -1,6 +1,6 @@
 <template>
 
-    <div class="cart-button"
+    <div class="cart-button" v-if="showCartButton"
         @click="showHideCart()">
         <p>Cart: {{ getAmountInCart }}</p>
     </div>
@@ -17,6 +17,9 @@ export default {
         getAmountInCart() {
             return this.$store.getters.getAmountInCart
         },
+        showCartButton() {
+            return this.$store.state.showCartButton
+        }
     },
     methods: {
         unSelectProduct() {

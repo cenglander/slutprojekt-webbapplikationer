@@ -61,8 +61,6 @@ export default {
     async created() {
         this.$store.commit('restoreSession')
         this.orders = await this.$store.dispatch('getAllOrders')
-        this.$store.commit('changeCartVisibility', false)
-        this.$store.commit('changeLoginVisibility', false)
     }
 
 

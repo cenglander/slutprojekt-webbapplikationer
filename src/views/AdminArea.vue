@@ -123,8 +123,6 @@ export default {
 
   created() {
     this.$store.commit('restoreSession')
-    this.$store.commit('changeCartVisibility', false)
-    this.$store.commit('changeLoginVisibility', false)
   }
 };
 </script>

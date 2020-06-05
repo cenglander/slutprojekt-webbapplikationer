@@ -52,12 +52,9 @@ export default {
     methods: {
         addToCart(product) {
             this.$store.commit('addProductToCart', product)
-            console.log("cart: ")
-            console.log(this.$store.state.productsInCart)
         },
         showProduct(product) {
             this.$store.commit('setSelectedProduct', product)
-            console.log(this.$store.state.selectedProduct.title)
         },
     },
 

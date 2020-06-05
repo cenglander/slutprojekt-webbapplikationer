@@ -11,6 +11,9 @@
                 <router-link :to="'/adminarea'" v-if="isAdmin">
                     <li>Admin Area</li>
                 </router-link>
+                <router-link :to="'/checkout'">
+                    <li>Checkout</li>
+                </router-link>
                 <li>
                     <CartButton />
                 </li>

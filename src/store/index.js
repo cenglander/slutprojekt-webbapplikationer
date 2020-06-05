@@ -80,6 +80,7 @@ export default new Vuex.Store({
       let response = await API.logInUser(payload.email, payload.pass)
       if(response.status == 200){
         sessionStorage.setItem('sinus-token', response.token)
+        sessionStorage.setItem('sinus-user', JSON.stringify(response.user))
         context.commit('setUser', response.user)
         return response.status
       } else {

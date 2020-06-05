@@ -77,8 +77,26 @@ export default new Vuex.Store({
         state.productsInCart.push(newProduct)
       }
     },
-    removeProductFromCart() {
-      console.log('removing prod from cart');
+    removeProductFromCart(state, productToRemove) {
+      console.log('mutation-removing prod from cart');
+      // let productsInCartTemp = state.productsInCart
+      // for (let cartItem of productsInCartTemp) {
+
+      for (let cartItem of state.productsInCart) {
+
+        if (cartItem.product._id === productToRemove._id) {
+          cartItem.amount--
+          console.log("decreased by 1:")
+          console.log(cartItem.product.title)
+        
+          if (cartItem.amount == 0) {
+            state.productsInCart.splice(cartItem, 1)
+            console.log("amount is 0:")
+            console.log(cartItem.product.title)
+          }
+        }
+      }
+      console.log(state.productsInCart)
     },
     setSelectedProduct(state, payload) {
       console.log('setting selcted product');

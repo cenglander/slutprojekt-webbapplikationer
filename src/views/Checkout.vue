@@ -11,7 +11,11 @@
                 <p>{{product.price}}</p>
             </div>
         </div>
-        <h3>Payment Method</h3>
+        <div class="paymentM">
+            <h3>Payment Method</h3>
+            <p>{{getCurrentuser}}</p>
+        </div>
+
     </div>
 </template>
 
@@ -28,8 +32,12 @@ export default {
     computed: {
         getProductsInCart() {
             return this.$store.state.productsInCart
+        },
+        getCurrentuser() {
+            return this.$store.state.currentUser
         }
-    }
+    },
+
 }
 </script>
 

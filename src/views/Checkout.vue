@@ -1,7 +1,9 @@
 <template>
     <div class="checkout-container">
         <Header/>
+        <p>---------------------------------------------</p>
         <h1>Checkout</h1>
+        <p>---------------------------------------------</p>
         <h3>Items in cart</h3>
         <ul class="items">
             <li class="item"    v-for="(item, index) in getProductsInCart"
@@ -14,6 +16,7 @@
                 <button @click="removeFromCart(item.product)">-</button>
             </li>
         </ul>
+        <h3>SUM - {{getSum}}</h3>
         <div class="paymentM">
             <form @submit.prevent="submit">
                 <h3>Payment Method</h3>
@@ -38,7 +41,7 @@ export default {
 
     data() { return {
         order: {
-            items: [], // item._id only
+            items: [], // item._ids only
             _id: "thisDoesntMatter"
         }
     }},
@@ -53,12 +56,18 @@ export default {
         },
         getCurrentuser() {
             return this.$store.state.currentUser
+        },
+        getSum() {
+            let sum = 0
+            for ( let itemInCart of this.$store.state.productsInCart) {
+                sum += itemInCart.amount*itemInCart.product.price
+            }
+            return sum + `:-`
         }
     },
 
     methods: {
         submit() {
-            console.log('submitting order');
             // adding item _ids to order.items
             for(let itemInCart of this.$store.state.productsInCart) {
                 if(itemInCart.amount > 1) {
@@ -69,8 +78,7 @@ export default {
                     this.order.items.push(itemInCart.product._id)
                 }
             }
-            console.log('dispatching addOrder');
-            console.log(this.$store.dispatch('addOrder', this.order))
+            this.$store.dispatch('addOrder', this.order)
             this.$router.push('myaccount')
         },
         addToCart(product) {

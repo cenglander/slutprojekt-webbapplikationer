@@ -37,6 +37,7 @@ export default new Vuex.Store({
     showCart: false,
     showLogIn: false,
     showProduct: false,
+    showCartButton: true,
     selectedProduct: null,
   },
   getters: {
@@ -53,6 +54,10 @@ export default new Vuex.Store({
       if (sessionStorage.getItem('sinus-cart')) {
         state.productsInCart = JSON.parse(sessionStorage.getItem('sinus-cart'))
       }
+      state.showCart = false
+      state.showLogIn = false
+      state.showCartButton = true
+
       console.log('session restored');
     }, 
     saveSession(state) {

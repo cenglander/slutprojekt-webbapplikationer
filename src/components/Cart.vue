@@ -13,6 +13,7 @@
                 </li>
             </ul>
             <h5>Total: {{ getTotalSumInCart }}</h5>
+            <button @click="goToCheckout">BUY THIS STUFF!</button>
         </div>
     </div>
 
@@ -43,6 +44,9 @@ export default {
         removeFromCart(product) {
             this.$store.commit('removeProductFromCart', product)
         },
+        goToCheckout() {
+            this.$router.push('/checkout')
+        }
     }
 }
 </script>

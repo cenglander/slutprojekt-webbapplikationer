@@ -2,15 +2,18 @@
     <div class="checkout-container">
         <Header/>
         <h1>Checkout</h1>
-        <div class="items">
-            <h3>Items in cart</h3>
-            <div class="item"   v-for="product in getProductsInCart"
-                                :key="product._id">
-                <img v-bind:src="require('@/assets/img/' + product.imgFile)" />
-                <h3>{{product.title}}</h3>
-                <p>{{product.price}}</p>
-            </div>
-        </div>
+        <h3>Items in cart</h3>
+        <ul class="items">
+            <li class="item"    v-for="(item, index) in getProductsInCart"
+                                :key="index">
+                <img v-bind:src="require('@/assets/img/' + item.product.imgFile)" />
+                <h3>{{item.product.title}}</h3>
+                <p>{{item.product.price}}</p>
+                <p>Amount: {{item.amount}}</p>
+                <button @click="addToCart(item.product)">+</button>
+                <button @click="removeFromCart(item.product)">-</button>
+            </li>
+        </ul>
         <div class="paymentM">
             <form @submit.prevent="submit">
                 <h3>Payment Method</h3>
@@ -69,7 +72,17 @@ export default {
             console.log('dispatching addOrder');
             console.log(this.$store.dispatch('addOrder', this.order))
             this.$router.push('myaccount')
-        }
+        },
+        addToCart(product) {
+            this.$store.commit('addProductToCart', product)
+        },
+        removeFromCart(product) {
+            this.$store.commit('removeProductFromCart', product)
+        },
+    },
+
+    created() {
+        this.$store.commit('restoreSession')
     }
 }
 </script>
@@ -80,18 +93,30 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-around;
         width: 60rem;
         border: 3px black solid;
         border-radius: 5px;
         .item {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            align-items: center;
             max-height: 10rem;
             max-width: 40rem;
             img {
+                margin-right: 1rem;
+            }
+            p {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            img {
                 max-width: 3rem;
                 max-height: 3rem;
+            }
+            button {
+                max-height: 2rem;
+                max-width: 2rem;
             }
         }
     }

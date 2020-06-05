@@ -119,6 +119,10 @@ export default {
     showImgCreate() {
       this.displayImgCreate = true
     },
+  },
+
+  created() {
+    this.$store.commit('restoreSession')
   }
 };
 </script>

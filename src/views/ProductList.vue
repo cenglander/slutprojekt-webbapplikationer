@@ -58,6 +58,10 @@ export default {
         },
     },
 
+    created() {
+        this.$store.commit('restoreSession')
+    }
+
 }
 </script>
 

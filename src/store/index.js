@@ -45,6 +45,22 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    restoreSession(state) {
+      if (  sessionStorage.getItem('sinus-token') && 
+            sessionStorage.getItem('sinus-user')) {
+        state.currentUser = JSON.parse(sessionStorage.getItem('sinus-user'))
+      }
+      if (sessionStorage.getItem('sinus-cart')) {
+        state.productsInCart = JSON.parse(sessionStorage.getItem('sinus-cart'))
+      }
+      console.log('session restored');
+    }, 
+    saveSession(state) {
+      console.log('saving session');
+      
+      sessionStorage.setItem('sinus-user', JSON.stringify(state.currentUser))
+      sessionStorage.setItem('sinus-cart', JSON.stringify(state.productsInCart))
+    },
     setProductList(state, payload) {
       state.productList = payload
     },
@@ -76,6 +92,7 @@ export default new Vuex.Store({
         newProduct.amount = 1
         state.productsInCart.push(newProduct)
       }
+      sessionStorage.setItem('sinus-cart', JSON.stringify(state.productsInCart))
     },
     removeProductFromCart(state, productToRemove) {
       console.log('mutation-removing prod from cart');
@@ -89,6 +106,7 @@ export default new Vuex.Store({
           }
         }
       }
+      sessionStorage.setItem('sinus-cart', JSON.stringify(state.productsInCart))
     },
     setSelectedProduct(state, payload) {
       console.log('setting selcted product');
@@ -98,7 +116,13 @@ export default new Vuex.Store({
       console.log('mutation - changing cart visibility')
       state.showCart = payload
     },
+    changeLoginVisibility(state, payload) {
+      state.showLogIn = payload
+    }
   },
+
+
+
   actions: {
 
     async loadProductList(context) {
@@ -114,6 +138,7 @@ export default new Vuex.Store({
       if(response.status == 200){
         sessionStorage.setItem('sinus-token', response.token)
         sessionStorage.setItem('sinus-user', JSON.stringify(response.user))
+        sessionStorage.setItem('sinus-cart', JSON.stringify(context.state.productsInCart))
         context.commit('setUser', response.user)
         return response.status
       } else {
@@ -140,21 +165,37 @@ export default new Vuex.Store({
     async createProduct(context, product) {
       console.log('in createProduct in actions');
       let token = sessionStorage.getItem('sinus-token')
-      let response = API.createProduct(token, product)
+      let response = await API.createProduct(token, product)
       if (response.status == 200) {
         context.dispatch('loadProductList')
       }
-      return response
+      return response.data
     },
 
-    async updateProduct(context, product) {
+    async updateProduct(context, updatedProduct) {
       console.log('in updateProduct in actions');
       let token = sessionStorage.getItem('sinus-token')
-      let response = API.updateProduct(token, product)
+      let response = await API.updateProduct(token, updatedProduct)
       if (response.status == 200) {
         context.dispatch('loadProductList')
       }
-      return response
+        // update product in cart
+        console.log('looking for product id ' + updatedProduct._id);
+        
+      for (let itemInCart of context.state.productsInCart) {
+        if (itemInCart.product._id == updatedProduct._id) {
+          console.log('found it!');
+          console.log('old name: ' + itemInCart.product.title);
+          
+          itemInCart.product = updatedProduct
+          console.log('new name: ' + updatedProduct.title);
+          
+        }
+      }
+      sessionStorage.setItem('sinus-cart', JSON.stringify(context.state.productsInCart))
+      console.log(context.state.productsInCart);
+      
+      return response.message
     },
 
     async deleteProduct(context, product) {
@@ -168,10 +209,15 @@ export default new Vuex.Store({
     },
 
     async getAllOrders() {
-      console.log('in getAllOrders in actions');
-      let token = sessionStorage.getItem('sinus-token')
-      let response = await API.getAllOrders(token)
-      return response
+      if(sessionStorage.getItem('sinus-token')) {
+        console.log('in getAllOrders in actions');
+        let token = sessionStorage.getItem('sinus-token')
+        let response = await API.getAllOrders(token)
+        return response
+      } else {
+        return []
+      }
+      
     },
 
     async addOrder(context, order) {

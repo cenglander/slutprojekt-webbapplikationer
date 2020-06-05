@@ -51,13 +51,18 @@ export default {
 
     computed: {
         getUser() {
+            console.log('getting user from store');
+            console.log(this.$store.state.currentUser);
+            
             return this.$store.state.currentUser
         },
     },
 
     async created() {
-        let orders = await this.$store.dispatch('getAllOrders')
-        this.orders = orders
+        this.$store.commit('restoreSession')
+        this.orders = await this.$store.dispatch('getAllOrders')
+        this.$store.commit('changeCartVisibility', false)
+        this.$store.commit('changeLoginVisibility', false)
     }
 
 

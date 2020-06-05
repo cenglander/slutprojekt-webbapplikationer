@@ -119,6 +119,12 @@ export default {
     showImgCreate() {
       this.displayImgCreate = true
     },
+  },
+
+  created() {
+    this.$store.commit('restoreSession')
+    this.$store.commit('changeCartVisibility', false)
+    this.$store.commit('changeLoginVisibility', false)
   }
 };
 </script>

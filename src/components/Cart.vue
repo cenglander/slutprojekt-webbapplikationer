@@ -33,7 +33,6 @@ export default {
         },
         removeFromCart(product) {
             this.$store.commit('removeProductFromCart', product)
-            console.log("not yet implemented i store")
         },
     }
 }

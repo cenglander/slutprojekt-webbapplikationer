@@ -2,8 +2,6 @@
 
     <div class="cart-button"
         @click="showHideCart()">
-        <!-- <p>Cart: {{ amountOfDifferentProducts }}</p> -->
-        <!-- <p> {{amountInCart}} </p> -->
         <p>Cart: {{ getAmountInCart }}</p>
     </div>
 

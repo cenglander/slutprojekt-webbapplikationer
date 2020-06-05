@@ -2,7 +2,9 @@
 
     <div class="cart-button"
         @click="showHideCart()">
-        <p>Cart: {{ amountOfProducts }}</p>
+        <!-- <p>Cart: {{ amountOfDifferentProducts }}</p> -->
+        <!-- <p> {{amountInCart}} </p> -->
+        <p>Cart: {{ getAmountInCart }}</p>
     </div>
 
 </template>
@@ -11,13 +13,11 @@
 export default {
     name: 'CartButton',
     data: () => ({
-        // showTheCart: this.$store.state.showCart
-        showTheCart: false
+        showTheCart: false,
     }),
     computed: {
-        amountOfProducts() {
-            console.log("amount of products")
-            return this.$store.state.productsInCart.length
+        getAmountInCart() {
+            return this.$store.getters.getAmountInCart
         },
     },
     methods: {

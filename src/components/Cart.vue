@@ -4,9 +4,10 @@
         <div class="cart">
             <h1>Varukorgen</h1>
             <ul>
-                <li v-for="(product, index) in getProductsInCart"
+                <li v-for="(item, index) in getProductsInCart"
                     :key="index">
-                    <p>{{ product.title }} {{ product.price }}</p>
+                    <p>{{ item.product.title }}
+                        --- Styckpris: {{ item.product.price }}--- Antal: {{ item.amount }}</p>
                 </li>
             </ul>
         </div>
@@ -25,25 +26,10 @@ export default {
         },
     },
     methods: {
-        // countAmountOfEachProduct() {
-        //     let allProductsInCart = this.getProductsInCart       
-        //     let amount = {}
-        //     let counted = []
-        //     console.log(allProductsInCart)
-        //     for (let i = 0; i < allProductsInCart.length; i++) {
-        //         let count = 1
-        //         let currentProduct = allProductsInCart[i]
-        //         console.log(currentProduct._id)
-        //         console.log("mellan")
-        //         console.log(currentProduct)
-        //         for(let j = i+1; j < allProductsInCart.length; j++) {
-        //             amount = {amount : count}
-        //             counted.push({currentProduct}, {amount})
-        //             counted.currentProduct
-        //             console.log(counted)
-        //         }
-        //     }
-        // }
+        // addToCart(product) {
+        //     this.$store.commit('addProductToCart', product)
+        //     console.log("i cart")
+        // },
     }
 }
 </script>

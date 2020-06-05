@@ -21,7 +21,12 @@ export default new Vuex.Store({
     //     },
     //     orderHistory: [ orderId1, orderId2, ... ]
     // } 
-    productsInCart: [],
+    productsInCart: [
+        // {
+        //   amount: Number,
+        //   product: {}
+        // }
+    ],
     order: {
         // _id: 123,
         // timeStamp: Date.now(), 
@@ -33,6 +38,11 @@ export default new Vuex.Store({
     showLogIn: false,
     showProduct: false,
     selectedProduct: null,
+  },
+  getters: {
+    getAmountInCart: state => {
+      return state.productsInCart.map(item => item.amount).reduce((a, b) => a + b, 0)
+    }
   },
   mutations: {
     setProductList(state, payload) {
@@ -50,9 +60,22 @@ export default new Vuex.Store({
       console.log('setting order...');
       state.order = payload
     },
-    addProductToCart(state, payload) {
-      console.log('adding prod to cart');
-      state.productsInCart.push(payload)
+    addProductToCart(state, productToAdd) {
+      console.log('mutation-adding prod to cart');
+      let productExists = false
+      for (let cartItem of state.productsInCart) {
+        if (cartItem.product._id === productToAdd._id) {
+          cartItem.amount++
+          productExists = true
+        }
+      }
+      if (!productExists) {
+        console.log("in product doesnt exist");
+        let newProduct = {}
+        newProduct.product = productToAdd
+        newProduct.amount = 1
+        state.productsInCart.push(newProduct)
+      }
     },
     removeProductFromCart() {
       console.log('removing prod from cart');

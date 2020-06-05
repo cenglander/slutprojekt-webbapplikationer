@@ -12,6 +12,7 @@
                         --- Styckpris: {{ item.product.price }}--- Antal: {{ item.amount }}</p>
                 </li>
             </ul>
+            <h5>Total: {{ getTotalSumInCart }}</h5>
         </div>
     </div>
 
@@ -25,6 +26,14 @@ export default {
     computed: {
         getProductsInCart() {
             return this.$store.state.productsInCart
+        },
+        getTotalSumInCart() {
+            let total = 0
+            for (let item of this.$store.state.productsInCart) {
+                let sumEach = item.product.price * item.amount
+                total += sumEach
+            }
+            return total
         },
     },
     methods: {

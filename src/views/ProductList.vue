@@ -3,7 +3,8 @@
         
         <Header/>
         <Cart v-if="getCartVisibility" />
-        <Product v-if="getSelectedProduct!=null" />
+        <Product class="product-modal" 
+            v-if="getSelectedProduct!=null" />
         
         <ul class="product-grid">
             <li v-for='product in getProductList'

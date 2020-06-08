@@ -66,7 +66,9 @@ export default {
 
 <style scoped lang="scss">
 div.wrapper {
-
+    margin: 0 auto;
+    padding: 0;
+    width: 100vw;
 
     div.product-list-container {
         max-width: 1000px;
@@ -100,6 +102,9 @@ div.wrapper {
                     margin-bottom: 0.6rem;
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
+                    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     img.add-to-cart {
                         width: 2rem;
                         height: 2rem;

@@ -69,8 +69,9 @@ export default {
                     ". . . long long .";
                 grid-template-columns: repeat(6, 1fr);
                 grid-template-rows: 4rem 3rem 2rem 2rem 6rem 3rem;
-                // grid-template-rows: repeat(6, 4rem);
-
+                -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                 img.add-to-cart {
                     grid-area: add-img;
                     width: 3.5rem;

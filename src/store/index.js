@@ -230,6 +230,8 @@ export default new Vuex.Store({
       
       let token = sessionStorage.getItem('sinus-token')
       let response = await API.addOrder(token, order)
+      context.state.productsInCart = []
+      context.commit('saveSession')
       return response
     },
 

@@ -2,7 +2,7 @@
     <div class="checkout-container">
         <Header/>
         <p>---------------------------------------------</p>
-        <h1>Checkout</h1>
+        <h1 class="checkoutText">Checkout</h1>
         <p>---------------------------------------------</p>
         <h3>Items in cart</h3>
         <ul class="items">
@@ -10,25 +10,29 @@
                                 :key="index">
                 <img v-bind:src="require('@/assets/img/' + item.product.imgFile)" />
                 <h3>{{item.product.title}}</h3>
-                <p>{{item.product.price}}</p>
-                <p>Amount: {{item.amount}}</p>
-                <button @click="addToCart(item.product)">+</button>
-                <button @click="removeFromCart(item.product)">-</button>
+                <p>{{item.product.price}} kr</p>
+                <p>x {{item.amount}}</p>
+                <button @click="addToCart(item.product)"><img v-bind:src="require('@/assets/img/add-circle-outline.svg')" /></button>
+                <button @click="removeFromCart(item.product)"><img v-bind:src="require('@/assets/img/remove-circle-outline.svg')" /></button>
+                <p>subtotal: {{item.amount*item.product.price}}</p>
             </li>
         </ul>
-        <h3>SUM - {{getSum}}</h3>
-        <div class="paymentM">
-            <form @submit.prevent="submit">
-                <h3>Payment Method</h3>
-                <input type="radio" id="card" name="paymentMethod" value="card">
-                <label for="card">Card</label><br>
-                <input type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer">
-                <label for="bankTransfer">Bank transfer</label><br>
-                <input type="radio" id="kidney" name="paymentMethod" value="kidney">
-                <label for="kidney">Kidney</label><br>
-                <button type="submit">SUBMIT ORDER</button>
-            </form>
+        <div class="summery">
+            <h3>SUM - {{getSum}}</h3>
+            <h3>Choose Payment Method</h3>
+            <div class="paymentM">
+                <form @submit.prevent="submit">
+                    <input type="radio" id="card" name="paymentMethod" value="card">
+                    <label for="card">Card</label><br>
+                    <input type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer">
+                    <label for="bankTransfer">Bank transfer</label><br>
+                    <input type="radio" id="kidney" name="paymentMethod" value="kidney">
+                    <label for="kidney">Kidney</label><br>
+                    <button type="submit">SUBMIT ORDER</button>
+                </form>
+            </div>
         </div>
+        
 
     </div>
 </template>
@@ -98,37 +102,58 @@ export default {
 
 <style scoped lang="scss">
 .checkout-container {
+    margin: auto;
+    background-color: #F0F0F0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
     .items {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
-        width: 60rem;
-        border: 3px black solid;
-        border-radius: 5px;
+        background-color: #EBEBEB;
+        min-width: 40rem;
+        max-width: 700px;
+        margin: 0;
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+        border-radius: 2rem;
+        .item:nth-child(even) {
+            background-color: white;
+        }
         .item {
-            display: flex;
-            flex-direction: row;
+            margin: 0;
+            display: grid;
             align-items: center;
+            grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 2fr;
             max-height: 10rem;
-            max-width: 40rem;
-            img {
-                margin-right: 1rem;
-            }
-            p {
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
+            min-width: 35rem;
+            max-width: 600px;
+            background-color: #F1F1F1;
             img {
                 max-width: 3rem;
                 max-height: 3rem;
             }
             button {
+                background-color: transparent;
+                border: none;
+                color: none;
+                margin: 0;
+                padding: 0;
                 max-height: 2rem;
                 max-width: 2rem;
+                img {
+                    height: 2rem;
+                    width: 2rem;
+                }
             }
         }
     }
+}
+ul, li {
+    padding: 0;
+    margin: 0;
 }
 
 </style>

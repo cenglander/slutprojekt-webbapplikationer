@@ -1,9 +1,10 @@
 <template>
+    <div class="wrapper">    
     <div class="product-list-container">
-        
+        <Product v-if="getSelectedProduct!=null" />
         <Header/>
         <Cart v-if="getCartVisibility" />
-        <Product v-if="getSelectedProduct!=null" />
+        <!-- <Product v-if="getSelectedProduct!=null" /> -->
         
         <ul class="product-grid">
             <li v-for='product in getProductList'
@@ -21,6 +22,7 @@
                 <p class="bold">{{ product.price }} SEK</p> 
             </li>   
         </ul>
+    </div>
     </div>
 </template>
 
@@ -63,6 +65,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+div.wrapper {
+    margin: 0 auto;
+    padding: 0;
+    width: 100vw;
+
     div.product-list-container {
         max-width: 1000px;
         margin: 0 auto;
@@ -95,6 +102,9 @@ export default {
                     margin-bottom: 0.6rem;
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
+                    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     img.add-to-cart {
                         width: 2rem;
                         height: 2rem;
@@ -102,6 +112,14 @@ export default {
                         grid-column: 3;
                         display: flex;
                         justify-self: flex-end;
+                    }
+                    img.add-to-cart:hover {
+                        width: 2.1rem;
+                        height: 2.1rem;
+                    }
+                    img.add-to-cart:active {
+                    width: 2rem;
+                    height: 2rem;
                     }
                     img.product {
                         display: flex;
@@ -114,7 +132,9 @@ export default {
             }   
         }  
     }
+}
     @media screen and (max-width: 980px) {
+        div.wrapper {
         div.product-list-container {
             ul.product-grid {
                 width: 40rem;
@@ -122,7 +142,9 @@ export default {
             }
         }
     }
+    }
     @media screen and (max-width: 650px) {
+        div.wrapper {
         div.product-list-container {
             margin: 0 auto;
             ul.product-grid {
@@ -130,5 +152,6 @@ export default {
                 grid-template-columns: repeat(1, 30rem);
             }
         }
+    }
     }
 </style>

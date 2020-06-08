@@ -41,19 +41,20 @@ export default {
     // .product-modal { 
     //     background: rgba(0,0,0,0.5); }
         div.product-container {
-            width: 100%;
+            width: 1000px;
             height: 100%;
             background: rgba(0,0,0,0.5);
             padding: 7rem 0 0 0;
-            display: flex;
-            justify-content: center;
+            margin: 0 auto;
+            // display: flex;
+            // justify-content: center;
             z-index: 5;
             position: absolute;
-            .product {
+            div.product {
                 background: #EBEBEB;
                 // position: absolute;
                 z-index: 10;
-                margin: 0 auto;
+                // margin: 0 auto;
                 width: 36rem;
                 height: 20rem;
                 margin: 0 auto;

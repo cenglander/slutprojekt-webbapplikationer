@@ -1,6 +1,8 @@
 <template>
     <div class="wrapper">
+    
     <div class="product-list-container">
+
         <Product v-if="getSelectedProduct!=null" />
         <Header/>
         <Cart v-if="getCartVisibility" />

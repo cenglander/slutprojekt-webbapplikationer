@@ -1,9 +1,10 @@
 <template>
+    <div class="wrapper">
     <div class="product-list-container">
-        
+        <Product v-if="getSelectedProduct!=null" />
         <Header/>
         <Cart v-if="getCartVisibility" />
-        <Product v-if="getSelectedProduct!=null" />
+        <!-- <Product v-if="getSelectedProduct!=null" /> -->
         
         <ul class="product-grid">
             <li v-for='product in getProductList'
@@ -21,6 +22,7 @@
                 <p class="bold">{{ product.price }} SEK</p> 
             </li>   
         </ul>
+    </div>
     </div>
 </template>
 
@@ -63,6 +65,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+div.wrapper {
+
+
     div.product-list-container {
         max-width: 1000px;
         margin: 0 auto;
@@ -122,7 +127,9 @@ export default {
             }   
         }  
     }
+}
     @media screen and (max-width: 980px) {
+        div.wrapper {
         div.product-list-container {
             ul.product-grid {
                 width: 40rem;
@@ -130,7 +137,9 @@ export default {
             }
         }
     }
+    }
     @media screen and (max-width: 650px) {
+        div.wrapper {
         div.product-list-container {
             margin: 0 auto;
             ul.product-grid {
@@ -138,5 +147,6 @@ export default {
                 grid-template-columns: repeat(1, 30rem);
             }
         }
+    }
     }
 </style>

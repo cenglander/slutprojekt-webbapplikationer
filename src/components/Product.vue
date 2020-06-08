@@ -5,7 +5,7 @@
             <img class="add-to-cart"
                         :src="require('@/assets/img/add-circle-outline.svg')" 
                         @click="addToCart(selectedProduct)"> 
-            <img class="product"
+            <img class="product-img"
                         :src="require('@/assets/img/' + selectedProduct.imgFile)" />
             <h2 class="title">{{ selectedProduct.title }}</h2> 
             <h4 class="shortDesc">{{ selectedProduct.shortDesc }}</h4>
@@ -42,8 +42,9 @@ export default {
     //     background: rgba(0,0,0,0.5); }
         div.product-container {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background: rgba(0,0,0,0.5);
+            padding: 7rem 0 0 0;
             display: flex;
             justify-content: center;
             z-index: 5;
@@ -86,9 +87,9 @@ export default {
                     width: 3.5rem;
                     height: 3.5rem;
                 }
-                img.product {
+                img.product-img {
                     grid-area: product-img;
-                    width: 5rem;
+                    width: 15rem;
                     // display: flex;
                     // justify-self: flex-start;
                 }

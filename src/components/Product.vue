@@ -41,9 +41,13 @@ export default {
     // .product-modal { 
     //     background: rgba(0,0,0,0.5); }
         div.product-container {
+            width: 100%;
+            height: 100vh;
             background: rgba(0,0,0,0.5);
-            // position: absolute;
-            // margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            z-index: 5;
+            position: absolute;
             .product {
                 background: #EBEBEB;
                 // position: absolute;
@@ -107,27 +111,28 @@ export default {
                 }
             }
         }
-    //     display: flex;
-    //     justify-content: center;
-    //     .product {
-    //         background: lightslategrey;
-    //         width: 50rem;
-    //         height: 50rem;
-    //         margin: 0 auto;
-    //         // z-index: 10;
-    //         position: absolute;
-    //         img {
-    //             height: 25rem;
-    //         }
-    //         button {
-    //             width: 5rem;
-    //             height: 5rem;
-    //         }
-    //         // .close {
-    //         //     //put in right corner?
-    //         // }
-    //         // .add-to-cart {
-    //         // }
-    //     }
-    // }
+// div .product-container {
+//         display: flex;
+//         justify-content: center;
+//         .product {
+//             background: lightslategrey;
+//             width: 50rem;
+//             height: 50rem;
+//             margin: 0 auto;
+//             // z-index: 10;
+//             position: absolute;
+//             img {
+//                 height: 25rem;
+//             }
+//             button {
+//                 width: 5rem;
+//                 height: 5rem;
+//             }
+//             // .close {
+//             //     //put in right corner?
+//             // }
+//             // .add-to-cart {
+//             // }
+//         }
+//     }
 </style>

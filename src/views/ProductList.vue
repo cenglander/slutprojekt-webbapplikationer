@@ -136,6 +136,8 @@ div.wrapper {
     @media screen and (max-width: 980px) {
         div.wrapper {
         div.product-list-container {
+            // width: 600px;
+            margin: 0 auto;
             ul.product-grid {
                 width: 40rem;
                 grid-template-columns: repeat(2, 20rem);

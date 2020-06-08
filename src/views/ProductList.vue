@@ -3,8 +3,7 @@
         
         <Header/>
         <Cart v-if="getCartVisibility" />
-        <Product class="product-modal" 
-            v-if="getSelectedProduct!=null" />
+        <Product v-if="getSelectedProduct!=null" />
         
         <ul class="product-grid">
             <li v-for='product in getProductList'
@@ -103,6 +102,14 @@ export default {
                         grid-column: 3;
                         display: flex;
                         justify-self: flex-end;
+                    }
+                    img.add-to-cart:hover {
+                        width: 2.1rem;
+                        height: 2.1rem;
+                    }
+                    img.add-to-cart:active {
+                    width: 2rem;
+                    height: 2rem;
                     }
                     img.product {
                         display: flex;

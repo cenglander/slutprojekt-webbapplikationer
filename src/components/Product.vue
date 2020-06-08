@@ -42,48 +42,71 @@ export default {
     //     background: rgba(0,0,0,0.5); }
         div.product-container {
             background: rgba(0,0,0,0.5);
-            
+            // position: absolute;
+            // margin: 0 auto;
             .product {
                 background: #EBEBEB;
-                width: 30rem;
+                // position: absolute;
+                z-index: 10;
                 margin: 0 auto;
+                width: 36rem;
+                height: 20rem;
+                margin: 0 auto;
+                padding: 2rem;
                 border-radius: 2rem;
                 display: grid;
-                grid-auto-columns: repeat(6, 1fr);
-                grid-auto-rows: repeat(6, 1fr);
+                grid-template-areas: 
+                    "product-img product-img . . . add-img"
+                    "product-img product-img . title title ."
+                    "product-img product-img . short short ."
+                    "product-img product-img . price price ."
+                    "product-img product-img . long long ."
+                    ". . . long long .";
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: 4rem 3rem 2rem 2rem 6rem 3rem;
+                // grid-template-rows: repeat(6, 4rem);
 
                 img.add-to-cart {
+                    grid-area: add-img;
                     width: 3.5rem;
                     height: 3.5rem;
                     color: black;
-                    grid-column: 6;
-                    grid-row: 1;
+                    display: flex;
+                    justify-self: flex-end;
+                }
+                img.add-to-cart:hover {
+                    width: 3.6rem;
+                    height: 3.6rem;
+                }
+                img.add-to-cart:active {
+                    width: 3.5rem;
+                    height: 3.5rem;
                 }
                 img.product {
+                    grid-area: product-img;
+                    width: 5rem;
                     // display: flex;
-                    // justify-self: center;
-                    // align-self: center;
-                    // height: 10rem;
-                    grid-column: span 1 / 3;
-                    grid-row: span 3 / 6;
-                    width: 15rem;
+                    // justify-self: flex-start;
                 }
                 h2.title {
-                    grid-column: span 4 / 7;
-                    grid-row: span 2 / 3;
+                    grid-area: title;
+                    text-align: left;
                 }
                 h4.shortDesc {
-                    grid-column: span 4 / 7;
-                    grid-row: span 3 / 4;
+                    grid-area: short;
+                    text-align: left;
                 }
                 p.price {
-
+                    grid-area: price;
+                    text-align: left;
                 }
                 p.longDesc {
-
+                    grid-area: long;
+                    text-align: left;
+                    font-size: 0.8rem;
                 }
             }
-
+        }
     //     display: flex;
     //     justify-content: center;
     //     .product {
@@ -107,5 +130,4 @@ export default {
     //         // }
     //     }
     // }
-    }
 </style>

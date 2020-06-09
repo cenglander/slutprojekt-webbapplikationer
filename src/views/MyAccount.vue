@@ -44,9 +44,18 @@
                     </li>
                 </ul>
             </div>
+            <div v-if="getCurrentOrder">
+                {{getCurrentOrder}}
+            </div>
         </div>
         <div class="noUser" v-else>
-            <h1>Please log in</h1>
+            <h1 class="plsLogin">Please log in</h1>
+            <div v-if="getCurrentOrder">
+                <div  v-for="item in getCurrentOrder"
+                    :key="item">
+                    {{getProduct(item)}}
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -89,6 +98,9 @@ export default {
             }
             var year = date.getFullYear()
             return year + `-` + month + `-` + day
+        },
+        getProduct(id) {
+            return this.$store.state.productList.filter(product => product._id === id)
         }
 
     },
@@ -97,12 +109,14 @@ export default {
         getUser() {
             return this.$store.state.currentUser
         },
+        getCurrentOrder() {
+            return this.$store.state.awaitedOrder.items
+        }
     },
-
     async created() {
         this.$store.commit('restoreSession')
         this.orders = await this.$store.dispatch('getAllOrders')
-    }
+    },
 }
 </script>
 
@@ -115,6 +129,7 @@ export default {
     align-items: center;
     flex-direction: column;
     max-width: 1000px;
+    min-height: 100vh;
 
     .userPresent{
 
@@ -191,6 +206,14 @@ export default {
                 }
             }
         }
+    }
+
+    .noUser {
+
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
     }
 }
 

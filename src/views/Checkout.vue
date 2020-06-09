@@ -82,7 +82,7 @@ export default {
                 // adding item _ids to order.items
                 for(let itemInCart of this.$store.state.productsInCart) {
                     if(itemInCart.amount > 1) {
-                        for (let i = 1; i < itemInCart.amount; i++) {
+                        for (let i = 0; i < itemInCart.amount; i++) {
                             this.order.items.push(itemInCart.product._id)
                         }
                     } else {

@@ -2,7 +2,7 @@
     <div class="wrapper">
         <Product v-if="getSelectedProduct!=null" />
         <div class="product-list-container">
-            <Header />
+            <Header :CurrentLocation="'Products'"/>
             <Cart v-if="getCartVisibility" />
             <ul class="product-grid">
                 <li v-for='product in getProductList'

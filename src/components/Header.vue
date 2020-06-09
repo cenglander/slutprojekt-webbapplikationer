@@ -1,28 +1,32 @@
 <template>
     <div class="header-wrapper">
         <div class="nav">
-            <ul>
+            <div class="home-admin">
                 <router-link :to="'/productlist'">
-                    <li>Products</li>
-                </router-link>
-                <router-link :to="'/myaccount'">
-                    <li>My Account</li>
+                    <div class="homeButton">
+                        <img :src="require('@/assets/img/home.svg')" alt="User Button">
+                    </div>
                 </router-link>
                 <router-link :to="'/adminarea'" v-if="isAdmin">
-                    <li>Admin Area</li>
+                    <div class="adminButton">
+                        <img :src="require('@/assets/img/admin-pen.svg')" alt="Admin Button">
+                    </div>
                 </router-link>
-                <router-link :to="'/checkout'">
-                    <li>Checkout</li>
-                </router-link>
-                <li>
-                    <CartButton />
-                </li>
-            </ul>
+            </div>
+
+            <div class="central">
+               <h1>{{CurrentLocation}}</h1> 
+            </div>
+            
+            <div class="user-cart">
+                <CartButton />
+                <div class="login-button" @click="showLogIn">
+                    <img :src="require('@/assets/img/person-outline.svg')" alt="User Button">
+                </div>
+            </div>
+            <LogIn/>
         </div>
-        <div class="login-button" @click="showLogIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z"/></svg>
-        </div>
-        <LogIn/>
+        
     </div>
 </template>
 
@@ -31,6 +35,10 @@ import LogIn from '@/components/LogIn'
 import CartButton from '@/components/CartButton'
 export default {
     name: 'Header',
+
+    props: {
+        CurrentLocation: String
+    },
     
     components: {
         LogIn,
@@ -57,23 +65,75 @@ export default {
 
 <style scoped lang="scss">
 .header-wrapper {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: #D8D8D8;
+    width: 100%;
+    height: 5rem;
+
     .nav {
-        ul {
-            list-style: none;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+        .home-admin {
+
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
-            li {
-                margin: 1rem;
+            justify-content: flex-start;
+            align-items: center;
+
+            .homeButton {
+
+                margin-left: 1rem;
+                margin-right: 1rem;
+
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+            .adminButton {
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+
+        }
+
+        .central {
+            display: flex;
+        }
+    
+        .user-cart {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            .login-button {
+
+                margin-left: 1rem;
+                margin-right: 1rem;
+
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+
+                .cart-button {
+                    justify-self: flex-end;
+                }
             }
         }
-    }
-    .login-button {
-        align-self: center;
-        
     }
 }
 a:link {

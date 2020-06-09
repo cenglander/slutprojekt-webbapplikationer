@@ -1,6 +1,6 @@
 <template>
     <div class="my-account">
-        <Header/>
+        <Header :CurrentLocation="'My Account'"/>
         <div class="userPresent" v-if="getUser">
             <h1>Profile: {{getUser.role}}</h1>
             <div class="profile">

@@ -1,7 +1,6 @@
 <template>
     <div class="wrapper">
         <Product v-if="getSelectedProduct!=null" />
-        <!-- <Header /> -->
         <div class="product-list-container">
             <Header />
             <Cart v-if="getCartVisibility" />
@@ -18,13 +17,32 @@
                                 :src="require('@/assets/img/' + product.imgFile)" />
                         </div>
                     </div>
-                    
                     <p>{{ product.title }}</p>
                     <p>{{ product.shortDesc }}</p>
                     <p class="bold">{{ product.price }} SEK</p> 
                 </li>   
             </ul>
         </div>
+        <Header />
+        <Cart v-if="getCartVisibility" />
+        <ul class="product-grid">
+            <li v-for='product in getProductList'
+                :key="product._id">
+                <div class="product">
+                    <img class="add-to-cart"
+                        :src="require('@/assets/img/add-circle-outline.svg')" 
+                        @click="addToCart(product)">
+                    <div class="product-inner"
+                        @click="showProduct(product)">
+                        <img class="product-img" 
+                            :src="require('@/assets/img/' + product.imgFile)" />
+                    </div>
+                </div>
+                <p>{{ product.title }}</p>
+                <p>{{ product.shortDesc }}</p>
+                <p class="bold">{{ product.price }} SEK</p> 
+            </li>   
+        </ul>
     </div>
 </template>
 
@@ -62,16 +80,16 @@ export default {
     created() {
         this.$store.commit('restoreSession')
     }
-
 }
 </script>
 
 <style scoped lang="scss">
 div.wrapper {
+    margin: 0 auto;
+    padding: 0;
     width: 100vw;
-    height: 100%;
+
     div.product-list-container {
-        z-index: 3;
         max-width: 1000px;
         margin: 0 auto;
         padding: 0;
@@ -102,16 +120,15 @@ div.wrapper {
                     margin-bottom: 0.6rem;
                     display: grid;
                     grid-template-columns: 90% 10%;
+                    grid-template-rows: 10% 90%;
                     -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     div.product-inner {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        grid-column: 1;
+                        grid-row: span 1 / 3;
                         img.product-img {
                             height: 10rem;
-                            grid-column: 1;
                         }
                     }
                     img.add-to-cart {
@@ -120,7 +137,6 @@ div.wrapper {
                         margin: 0.8rem;
                         color: black;
                         grid-column: 2;
-                        grid-row: 1;
                         display: flex;
                         justify-self: flex-end;
                     }

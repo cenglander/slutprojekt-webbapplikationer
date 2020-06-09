@@ -2,10 +2,8 @@
     <div class="wrapper">    
     <div class="product-list-container">
         <Product v-if="getSelectedProduct!=null" />
-        <Header/>
+        <Header />
         <Cart v-if="getCartVisibility" />
-        <!-- <Product v-if="getSelectedProduct!=null" /> -->
-        
         <ul class="product-grid">
             <li v-for='product in getProductList'
                 :key="product._id">
@@ -136,6 +134,8 @@ div.wrapper {
     @media screen and (max-width: 980px) {
         div.wrapper {
         div.product-list-container {
+            // width: 600px;
+            margin: 0 auto;
             ul.product-grid {
                 width: 40rem;
                 grid-template-columns: repeat(2, 20rem);

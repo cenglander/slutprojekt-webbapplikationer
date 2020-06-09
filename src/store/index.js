@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productList: [],
+    awaitedOrder: [],
     currentUser: null, // add role to current user for admin/customer
     //   {
     //     _id: '6b521d3f-3d15...' // add server side
@@ -230,6 +231,8 @@ export default new Vuex.Store({
       
       let token = sessionStorage.getItem('sinus-token')
       let response = await API.addOrder(token, order)
+      context.state.awaitedOrder = order
+      context.state.order = []
       context.state.productsInCart = []
       context.commit('saveSession')
       return response

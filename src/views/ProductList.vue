@@ -8,16 +8,18 @@
             <ul class="product-grid">
                 <li v-for='product in getProductList'
                     :key="product._id">
-                    <img class="add-to-cart"
-                            :src="require('@/assets/img/add-circle-outline.svg')" 
-                            @click="addToCart(product)">
-                    <div class="product"
-                        @click="showProduct(product)">
-                        <img class="product-img" 
-                            :src="require('@/assets/img/' + product.imgFile)" />
-                        <!-- <img class="add-to-cart"
-                            :src="require('@/assets/img/add-circle-outline.svg')" 
-                            @click="addToCart(product)">     -->
+                    <div class="product-outer">
+                        <img class="add-to-cart"
+                                :src="require('@/assets/img/add-circle-outline.svg')" 
+                                @click="addToCart(product)">
+                        <div class="product"
+                            @click="showProduct(product)">
+                            <img class="product-img" 
+                                :src="require('@/assets/img/' + product.imgFile)" />
+                            <!-- <img class="add-to-cart"
+                                :src="require('@/assets/img/add-circle-outline.svg')" 
+                                @click="addToCart(product)">     -->
+                        </div>
                     </div>
                     <p>{{ product.title }}</p>
                     <p>{{ product.shortDesc }}</p>

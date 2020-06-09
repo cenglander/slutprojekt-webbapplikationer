@@ -3,11 +3,14 @@
         <div class="triangle">
             <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.7915 1.80746C14.5707 0.527088 16.4293 0.527087 17.2085 1.80746L30.5376 23.7103C31.3487 25.0431 30.3893 26.75 28.8291 26.75H2.17085C0.61066 26.75 -0.348731 25.0431 0.462354 23.7103L13.7915 1.80746Z" fill="white"/></svg>
         </div>
-        <div class="close" @click="closeLogin">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+        <div class="upper">
+            <h3 v-if="!logedIn">Login</h3>
+            <div class="close" @click="closeLogin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+            </div>
         </div>
+        
         <div class="logInForm" v-if="!logedIn">
-            <h3>Login</h3>
             <form @submit.prevent="submit">
                 <div class="input-email">
                     <label for="email">E-mail</label>
@@ -17,17 +20,19 @@
                     <label for="password">Password</label>
                     <input id="password" v-model="password" placeholder="Password" type="text" name="password" :class="noPassword" />
                 </div>
-                <div class="submit-button">
-                    <input type="submit" value="SIGN IN" />
+                <div class="buttons">
+                    <button type="submit">SIGN IN</button>
+                    <p>Don't have an account?</p>
+                    <button type="button" @click="register">REGISTER</button>
                 </div>
             </form>
         </div>
         <div class="buttonsLoggedIn" v-if="logedIn">
             <div class="logout-button">
-                <input type="button" @click="signOut" value="SIGN OUT" />
+                <button type="button" @click="signOut">SIGN OUT</button>
             </div>
             <div class="profile">
-                <input type="button" @click="goToProfile" value="PROFILE" />
+                <button type="button" @click="goToProfile">PROFILE</button>
             </div>
         </div>
     </div>
@@ -57,9 +62,12 @@ export default {
                 response = await this.$store.dispatch('logInUser', { email : this.email, pass : this.password})
                 this.logedIn = true
                 this.closeLogin()
-            } else if (!this.email) {
+            } else if (!this.email && this.password) {
                 this.noEmailInput = true
-            } else if (!this.password) {
+            } else if (!this.password && this.email) {
+                this.noPasswordInput = true
+            } else if (!this.password && !this.email) {
+                this.noEmailInput = true
                 this.noPasswordInput = true
             }
             if (response !== null  && response.status == 200) {
@@ -90,6 +98,7 @@ export default {
             this.$router.push('myaccount')
         },
         register() {
+            this.closeLogin()
             this.$router.push('registration')
         }
     },
@@ -97,9 +106,6 @@ export default {
     computed: {
         showLogIn() {
             return !this.$store.state.showLogIn
-        },
-        color() {
-            return this.checked ? "#0E927D" : "none";
         },
         noPassword() {
             return { red: this.noPasswordInput };
@@ -114,8 +120,6 @@ export default {
             this.logedIn = true
         }
     }
-
-
 }
 </script>
 
@@ -123,15 +127,50 @@ export default {
 .noDisplay {
     display: none;
 }
+button, .close {
+    outline: none;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:active {
+        transform: scale(0.96);
+    }
+}
 .login-container {
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
     position: absolute;
     right: 1rem;
-    top: 4rem;
+    top: 5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #FFF;
+    border: 2px solid lightgrey;
+    border-radius: 1rem;
 
     .triangle{
         position: absolute;
         top: -1rem;
         right: 0.4rem;
+    }
+
+    .upper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        h3 {
+            font-size: 1.5rem;
+            margin-right: 5rem;
+            margin-top: 0;
+        }
+        .close {
+            margin-left: auto;
+        }
     }
     .logInForm {
         .input-email, .input-password {
@@ -139,31 +178,42 @@ export default {
             grid-template-columns: 1fr 2fr;
             text-align: left;
             margin-bottom: 1rem;
+            height: 1.6rem;
+            input.red {
+                background-color: rgba(255, 0, 0, 0.3);
+            }
+            label {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+        }
+        .buttons button {
+            -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+            border: none;
+            border-radius: 0.7rem;
+            height: 2rem;
+            width: 6rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
         }
     }
 
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFF;
-    border: 2px solid lightgrey;
-    border-radius: 1rem;
-    min-width: 10rem;
-    min-height: 5rem;
-
     .buttonsLoggedIn {
         div {
-            input {
+            button {
+                -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
                 border: none;
                 border-radius: 0.7rem;
                 height: 2rem;
                 width: 6rem;
-                margin: 1rem;
+                margin-top: 1rem;
             }
         }
     }
-
 }
 </style>

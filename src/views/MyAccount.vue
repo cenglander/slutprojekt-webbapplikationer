@@ -63,6 +63,7 @@
 
 <script>
 import Header from '@/components/Header'
+import Cart from '@/components/Cart'
 
 export default {
     name: 'MyAccount',
@@ -72,7 +73,8 @@ export default {
     }},
 
     components: {
-        Header
+        Header,
+        Cart,
     },
 
     methods: {

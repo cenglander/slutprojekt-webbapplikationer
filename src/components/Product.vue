@@ -44,9 +44,9 @@ export default {
 <style scoped lang="scss">
 div.product-container {
     width: 1000px;
-    height: 100vh;
+    height: 100%;
     padding: 7rem 0 0 0;
-    margin: 0 auto;
+    // margin: 0 auto;
     z-index: 5;
     position: absolute;
 
@@ -54,13 +54,14 @@ div.product-container {
     margin: 0 auto;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 10;
     position: absolute;
     }
     div.product {
         background: #EBEBEB;
+        // position: relative;
         position: absolute;
         z-index: 15;
         // margin: 0 auto;

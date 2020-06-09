@@ -66,7 +66,7 @@ export default {
 <style scoped lang="scss">
 div.wrapper {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     div.product-list-container {
         z-index: 3;
         max-width: 1000px;

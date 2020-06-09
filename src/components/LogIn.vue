@@ -1,9 +1,12 @@
 <template>
     <div class="login-container" v-if="!showLogIn">
+        <div class="triangle">
+            <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.7915 1.80746C14.5707 0.527088 16.4293 0.527087 17.2085 1.80746L30.5376 23.7103C31.3487 25.0431 30.3893 26.75 28.8291 26.75H2.17085C0.61066 26.75 -0.348731 25.0431 0.462354 23.7103L13.7915 1.80746Z" fill="white"/></svg>
+        </div>
+        <div class="close" @click="closeLogin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+        </div>
         <div class="logInForm" v-if="!logedIn">
-            <div class="close" @click="closeLogin">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
-            </div>
             <h3>Login</h3>
             <form @submit.prevent="submit">
                 <div class="input-email">
@@ -121,7 +124,15 @@ export default {
     display: none;
 }
 .login-container {
+    position: absolute;
+    right: 1rem;
+    top: 4rem;
 
+    .triangle{
+        position: absolute;
+        top: -1rem;
+        right: 0.4rem;
+    }
     .logInForm {
         .input-email, .input-password {
             display: grid;
@@ -139,11 +150,8 @@ export default {
     background-color: #FFF;
     border: 2px solid lightgrey;
     border-radius: 1rem;
-    position: absolute;
     min-width: 10rem;
     min-height: 5rem;
-    right: 4rem;
-    top: 6rem;
 
     .buttonsLoggedIn {
         div {

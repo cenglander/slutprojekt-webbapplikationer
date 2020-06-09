@@ -1,26 +1,48 @@
 <template>
-    <div class="wrapper">    
-    <div class="product-list-container">
+    <div class="wrapper">
         <Product v-if="getSelectedProduct!=null" />
+        <div class="product-list-container">
+            <Header />
+            <Cart v-if="getCartVisibility" />
+            <ul class="product-grid">
+                <li v-for='product in getProductList'
+                    :key="product._id">
+                    <div class="product">
+                        <img class="add-to-cart"
+                            :src="require('@/assets/img/add-circle-outline.svg')" 
+                            @click="addToCart(product)">
+                        <div class="product-inner"
+                            @click="showProduct(product)">
+                            <img class="product-img" 
+                                :src="require('@/assets/img/' + product.imgFile)" />
+                        </div>
+                    </div>
+                    <p>{{ product.title }}</p>
+                    <p>{{ product.shortDesc }}</p>
+                    <p class="bold">{{ product.price }} SEK</p> 
+                </li>   
+            </ul>
+        </div>
         <Header />
         <Cart v-if="getCartVisibility" />
         <ul class="product-grid">
             <li v-for='product in getProductList'
                 :key="product._id">
-                <div class="product-img"
-                    @click="showProduct(product)">
-                    <img class="product" 
-                        :src="require('@/assets/img/' + product.imgFile)" />
+                <div class="product">
                     <img class="add-to-cart"
                         :src="require('@/assets/img/add-circle-outline.svg')" 
-                        @click="addToCart(product)">    
+                        @click="addToCart(product)">
+                    <div class="product-inner"
+                        @click="showProduct(product)">
+                        <img class="product-img" 
+                            :src="require('@/assets/img/' + product.imgFile)" />
+                    </div>
                 </div>
                 <p>{{ product.title }}</p>
                 <p>{{ product.shortDesc }}</p>
                 <p class="bold">{{ product.price }} SEK</p> 
             </li>   
         </ul>
-    </div>
     </div>
 </template>
 
@@ -58,7 +80,6 @@ export default {
     created() {
         this.$store.commit('restoreSession')
     }
-
 }
 </script>
 
@@ -72,7 +93,6 @@ div.wrapper {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0;
-        background: #F0F0F0;;
         ul.product-grid {
             width: 60rem;
             margin: 0 auto;
@@ -92,22 +112,31 @@ div.wrapper {
                 p.bold {
                     font-weight: bold;
                 }
-                div.product-img {
+                div.product {
                     background: #EBEBEB;
                     border-radius: 1rem;
-                    height: 12rem;
-                    padding: 0.8rem;
+                    height: 13rem;
+                    padding: 0;
                     margin-bottom: 0.6rem;
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: 90% 10%;
+                    grid-template-rows: 10% 90%;
                     -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                    div.product-inner {
+                        grid-column: 1;
+                        grid-row: span 1 / 3;
+                        img.product-img {
+                            height: 10rem;
+                        }
+                    }
                     img.add-to-cart {
                         width: 2rem;
                         height: 2rem;
+                        margin: 0.8rem;
                         color: black;
-                        grid-column: 3;
+                        grid-column: 2;
                         display: flex;
                         justify-self: flex-end;
                     }
@@ -116,23 +145,16 @@ div.wrapper {
                         height: 2.1rem;
                     }
                     img.add-to-cart:active {
-                    width: 2rem;
-                    height: 2rem;
-                    }
-                    img.product {
-                        display: flex;
-                        justify-self: center;
-                        align-self: center;
-                        height: 10rem;
-                        grid-column: 2;
+                        width: 2rem;
+                        height: 2rem;
                     }
                 }
             }   
         }  
     }
 }
-    @media screen and (max-width: 980px) {
-        div.wrapper {
+@media screen and (max-width: 980px) {
+    div.wrapper {
         div.product-list-container {
             // width: 600px;
             margin: 0 auto;
@@ -142,9 +164,9 @@ div.wrapper {
             }
         }
     }
-    }
-    @media screen and (max-width: 650px) {
-        div.wrapper {
+}
+@media screen and (max-width: 650px) {
+    div.wrapper {
         div.product-list-container {
             margin: 0 auto;
             ul.product-grid {
@@ -153,5 +175,5 @@ div.wrapper {
             }
         }
     }
-    }
+}
 </style>

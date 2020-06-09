@@ -1,7 +1,9 @@
 <template>
     <div class="product-container">
         <div class="product">
-            <!-- <button class="close" @click="unSelectProduct(selectedProduct)">CLOSE</button> -->
+            <img class="close"
+                        :src="require('@/assets/img/close-circle-outline.svg')" 
+                        @click="unSelectProduct(selectedProduct)">
             <img class="add-to-cart"
                         :src="require('@/assets/img/add-circle-outline.svg')" 
                         @click="addToCart(selectedProduct)"> 
@@ -38,23 +40,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    // .product-modal { 
-    //     background: rgba(0,0,0,0.5); }
         div.product-container {
             width: 1000px;
             height: 100%;
             background: rgba(0,0,0,0.5);
             padding: 7rem 0 0 0;
             margin: 0 auto;
-            // display: flex;
-            // justify-content: center;
             z-index: 5;
             position: absolute;
             div.product {
                 background: #EBEBEB;
                 // position: absolute;
                 z-index: 10;
-                // margin: 0 auto;
+                margin: 0 auto;
                 width: 36rem;
                 height: 20rem;
                 margin: 0 auto;
@@ -62,8 +60,8 @@ export default {
                 border-radius: 2rem;
                 display: grid;
                 grid-template-areas: 
-                    "product-img product-img . . . add-img"
-                    "product-img product-img . title title ."
+                    "product-img product-img . . . close"
+                    "product-img product-img . title add-img ."
                     "product-img product-img . short short ."
                     "product-img product-img . price price ."
                     "product-img product-img . long long ."
@@ -73,27 +71,40 @@ export default {
                 -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                 -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                 box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+                img.close {
+                    grid-area: close;
+                    width: 2rem;
+                    height: 2rem;
+                    display: flex;
+                    justify-self: flex-end;
+                }
+                img.close:hover {
+                    width: 2.1rem;
+                    height: 2.1rem;
+                }
+                img.close:active {
+                    width: 2rem;
+                    height: 2rem;
+                }
                 img.add-to-cart {
                     grid-area: add-img;
-                    width: 3.5rem;
-                    height: 3.5rem;
+                    width: 5rem;
+                    height: 5rem;
                     color: black;
                     display: flex;
                     justify-self: flex-end;
                 }
                 img.add-to-cart:hover {
-                    width: 3.6rem;
-                    height: 3.6rem;
+                    width: 5.1rem;
+                    height: 5.1rem;
                 }
                 img.add-to-cart:active {
-                    width: 3.5rem;
-                    height: 3.5rem;
+                    width: 5rem;
+                    height: 5rem;
                 }
                 img.product-img {
                     grid-area: product-img;
                     width: 15rem;
-                    // display: flex;
-                    // justify-self: flex-start;
                 }
                 h2.title {
                     grid-area: title;
@@ -114,28 +125,9 @@ export default {
                 }
             }
         }
-// div .product-container {
-//         display: flex;
-//         justify-content: center;
-//         .product {
-//             background: lightslategrey;
-//             width: 50rem;
-//             height: 50rem;
-//             margin: 0 auto;
-//             // z-index: 10;
-//             position: absolute;
-//             img {
-//                 height: 25rem;
-//             }
-//             button {
-//                 width: 5rem;
-//                 height: 5rem;
-//             }
-//             // .close {
-//             //     //put in right corner?
-//             // }
-//             // .add-to-cart {
-//             // }
-//         }
-//     }
+        @media screen and (max-width: 980px) {
+            div.product-container {
+                max-width: 100vw;
+            }
+        }
 </style>

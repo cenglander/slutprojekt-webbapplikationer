@@ -3,27 +3,36 @@
     <Header />
     <h1>Registration</h1>
     <div class="create-account-container">
-        <div class="label-container">
+        <div class="email-container">
             <p>Email:</p>
-            <p>Password:</p>
-            <p>Password:</p>
-            <p>Name:</p>
-            <p>Street:</p>
-            <p>City:</p>
-            <p>Zip:</p>
+            <input type="email" v-model="user.email" placeholder="" />
         </div>
-      <div class="input-container">
-        <input type="email" v-model="user.email" placeholder="" />
-        <input type="password" v-model="user.password" placeholder="" />
-        <input type="password" v-model="user.repeatPassword" placeholder="" />
-        <input type="text" v-model="user.name" placeholder="" />
-        <input type="text" v-model="user.adress.street" placeholder="" />
-        <input type="text" v-model="user.adress.city" placeholder="" />
-        <input type="numbers" v-model="user.adress.zip" placeholder="" />
-      </div>
+        <div class="password-container">
+            <p>Password:</p>
+            <input type="password" v-model="user.password" placeholder="" />
+        </div>
+        <div class="repeat-password-container">
+            <p>Repeat Password:</p>
+            <input type="password" v-model="user.repeatPassword" placeholder="" />
+        </div>
+        <div class="name-container">
+            <p>Name:</p>
+            <input type="text" v-model="user.name" placeholder="" />
+        </div>
+        <div class="street-container">
+            <p>Street:</p>
+            <input type="text" v-model="user.adress.street" placeholder="" />
+        </div>
+        <div class="city-container">
+            <p>City:</p>
+            <input type="text" v-model="user.adress.city" placeholder="" />
+        </div>
+        <div class="zip-container">
+            <p>Zip:</p>
+            <input type="numbers" v-model="user.adress.zip" placeholder="" />
+        </div>
       <button class="create-button" v-on:click="createUser">create account</button>
     </div>
-    
   </div>
 </template>
 
@@ -70,43 +79,49 @@ export default {
   justify-content: center;
 }
 .create-account-container {
-    position: relative;
+  position: relative;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   margin-bottom: 5rem;
   border-radius: 3rem;
-  width: 40rem;
-  height: 30rem;
+  width: 45rem;
+  height: 35rem;
   background: #ebebeb;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.label-container {
-    width: 5rem;
-}
-.label-container p {
-    height: 1.5rem;
-    text-align: left;
-    margin: 0.1rem;
-}
-.input-container {
-    width: 10rem;
+.email-container, .repeat-password-container, .street-container, .zip-container {
+    background: #F1F1F1;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    width: 26rem;
 }
-.input-container input {
-    height: 1.2rem;
+.password-container, .name-container, .city-container {
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    width: 26rem;
+}
+p {
+    padding-left: 2rem;
+}
+input {
+    background-color: transparent;
+    border: 0px solid;
+    width: 15rem;
     font-size: 1rem;
 }
+input:focus, textarea:focus {
+    outline: none;
+}
 .create-button {
+  width: 10rem;
   padding: 1rem;
   border-radius: 3rem;
   position: absolute;
-  bottom: 4rem;
+  bottom: 2rem;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-
-    <div class="cart-button" v-if="showCartButton"
-        @click="showHideCart()">
-        <p>Cart: {{ getAmountInCart }}</p>
+    <div>
+        <img class="cart-button"
+            :src="require('@/assets/img/cart-outline.svg')"
+            @click="showHideCart()">
+        <p>{{ getAmountInCart }}</p>
     </div>
-
 </template>
 
 <script>
@@ -22,9 +22,9 @@ export default {
         }
     },
     methods: {
-        unSelectProduct() {
-            this.$store.commit('setSelectedProduct', null)
-        },
+        // unSelectProduct() {
+        //     this.$store.commit('setSelectedProduct', null)
+        // },
         showHideCart() {
             this.showTheCart = this.$store.state.showCart
             this.showTheCart = !this.showTheCart
@@ -42,13 +42,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    div .cart-button {
-        width: 4rem;
-        height: 4rem;
-        background: chocolate;
-        border-radius: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    div {
+        img.cart-button {
+        width: 3rem;
+        height: 3rem;
+        }
+        p {
+            margin: 0;
+            font-weight: bold;
+        }
     }
+    // div.cart-button {
+    //     width: 4rem;
+    //     height: 4rem;
+    //     background: chocolate;
+    //     border-radius: 2rem;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
 </style>

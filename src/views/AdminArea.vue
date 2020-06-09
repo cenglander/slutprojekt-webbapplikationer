@@ -3,7 +3,7 @@
     <Header />
     <div class="add-product-button">
       <img :src="require('@/assets/img/add-circle-outline.svg')"
-      @click="toggleCreateMode"
+      @click="createMode"
       />
     </div>
     <div class="user-container" v-if="getCurrentUser != null">
@@ -13,7 +13,7 @@
     <div class="create-product-container" v-if="activateCreateMode">
       <div class="create-product">
         <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
-        @click="toggleCreateMode">
+        @click="exitCreateMode">
         <div class="product-input-container">
         <input type="text" v-model="product.title" placeholder="title" />
         <input type="number" v-model="product.price" placeholder="price" />
@@ -21,11 +21,11 @@
         <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
         <button class="create-button" @click="createProduct">Create Product</button>
         </div>
-        <div class="product-in-update-container">
-          <article class="product-in-update">
-
+        <div class="product-in-create-container">
+          <article class="product-in-create">
           <img v-if="displayImgCreate" v-bind:src="require('@/assets/img/' + product.imgFile)" />
-          
+        
+        </article>
         <select v-on:change="showImgCreate" v-model="product.imgFile">
           <option value="hoodie-ash.png">hoodie-ash.png</option>
           <option value="hoodie-fire.png">hoodie-fire.png</option>
@@ -36,14 +36,13 @@
           <option value="wheel-spinner.png">wheel-spinner.png</option>
           <option value="wheel-wave.png">wheel-wave.png</option>
         </select>
-        </article>
         </div>
       </div>
     </div>
     <div class="update-product-container" v-if="activateUpdateMode">
       <div class="update-product">
         <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
-        @click="toggleUpdateMode">
+        @click="exitUpdateMode">
         <div class="product-input-container">
         <input type="text" v-model="updateProductForm.title" placeholder="title" />
         <input type="number" v-model="updateProductForm.price" placeholder="price" />
@@ -57,6 +56,7 @@
           v-if="displayImgUpdate"
           v-bind:src="require('@/assets/img/' + updateProductForm.imgFile)"
           /> 
+        </article>
         <select v-model="updateProductForm.imgFile">
           <option value="hoodie-ash.png">hoodie-ash.png</option>
           <option value="hoodie-fire.png">hoodie-fire.png</option>
@@ -67,7 +67,6 @@
           <option value="wheel-spinner.png">wheel-spinner.png</option>
           <option value="wheel-wave.png">wheel-wave.png</option>
         </select>
-        </article>
         </div>
       </div>
     </div>
@@ -77,7 +76,7 @@
           <div class="icons">
             <img
               :src="require('@/assets/img/create-outline.svg')"
-              @click="toggleUpdateMode(product)"
+              @click="updateMode(product)"
             />
             <img :src="require('@/assets/img/trash-outline.svg')" @click="deleteProduct(product)" />
           </div>
@@ -151,22 +150,29 @@ export default {
         this.$store.dispatch("deleteProduct", product);
       }
     },
-    toggleUpdateMode(product) {
-      if(this.activateCreateMode == true){
-        this.activateCreateMode = false
-      }
-      this.displayImgUpdate = true;
-      this.updateProductForm = product;
-      this.activateUpdateMode = !this.activateUpdateMode;
-    },
     showImgCreate() {
       this.displayImgCreate = true;
     },
-    toggleCreateMode() {
+    createMode() {
       if(this.activateUpdateMode == true){
-        this.activateUpdateMode = false
+        this.activateUpdateMode = false;
       }
-      this.activateCreateMode = !this.activateCreateMode;
+      this.activateCreateMode = true;
+    },
+    exitCreateMode() {
+      this.activateCreateMode = false;
+    },
+    updateMode(product) {
+      if(this.activateCreateMode == true){
+        this.activateCreateMode = false;
+      }
+      this.updateProductForm = product;
+      window.scrollTo(0, 0)
+      this.displayImgUpdate = true;
+      this.activateUpdateMode = true;
+    },
+    exitUpdateMode() {
+      this.activateUpdateMode = false;
     }
   },
 
@@ -188,8 +194,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-.product {
 }
 .product-frame {
   -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
@@ -269,6 +273,9 @@ export default {
 .product-in-update-container {
   height: 21rem;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .product-in-update {
   -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
@@ -325,5 +332,30 @@ export default {
 .create-button {
   padding: 1rem;
   border-radius: 3rem;
+}
+.product-in-create-container {
+  height: 21rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.product-in-create {
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  width: 20rem;
+  height: 15rem;
+  background: #ebebeb;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.product-in-create img {
+  height: 90%;
+  padding: 1rem;
+}
+.product-in-create select {
+  margin: 1rem;
 }
 </style>

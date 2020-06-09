@@ -2,10 +2,8 @@
     <div class="wrapper">    
     <div class="product-list-container">
         <Product v-if="getSelectedProduct!=null" />
-        <Header/>
+        <Header />
         <Cart v-if="getCartVisibility" />
-        <!-- <Product v-if="getSelectedProduct!=null" /> -->
-        
         <ul class="product-grid">
             <li v-for='product in getProductList'
                 :key="product._id">

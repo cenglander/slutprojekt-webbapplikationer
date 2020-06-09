@@ -45,10 +45,11 @@ export default {
 div.product-container {
     width: 1000px;
     height: 100%;
-    padding: 7rem 0 0 0;
+    // padding: 7rem 0 0 0;
     // margin: 0 auto;
+    // left: 50%;
     z-index: 5;
-    position: absolute;
+    // position: absolute;
 
     div.transparent-layer {
     margin: 0 auto;
@@ -57,7 +58,7 @@ div.product-container {
     height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 10;
-    position: absolute;
+    position: fixed;
     }
     div.product {
         background: #EBEBEB;
@@ -65,11 +66,11 @@ div.product-container {
         position: absolute;
         z-index: 15;
         // margin: 0 auto;
-        left: 50%;
+        left: 25%;
         // right: 50%;
         width: 36rem;
         height: 20rem;
-        margin: 0 auto;
+        margin: 5rem auto;
         padding: 2rem;
         border-radius: 2rem;
         display: grid;

@@ -8,13 +8,16 @@
             <ul class="product-grid">
                 <li v-for='product in getProductList'
                     :key="product._id">
-                    <div class="product-img"
-                        @click="showProduct(product)">
-                        <img class="product" 
-                            :src="require('@/assets/img/' + product.imgFile)" />
-                        <img class="add-to-cart"
+                    <img class="add-to-cart"
                             :src="require('@/assets/img/add-circle-outline.svg')" 
-                            @click="addToCart(product)">    
+                            @click="addToCart(product)">
+                    <div class="product"
+                        @click="showProduct(product)">
+                        <img class="product-img" 
+                            :src="require('@/assets/img/' + product.imgFile)" />
+                        <!-- <img class="add-to-cart"
+                            :src="require('@/assets/img/add-circle-outline.svg')" 
+                            @click="addToCart(product)">     -->
                     </div>
                     <p>{{ product.title }}</p>
                     <p>{{ product.shortDesc }}</p>
@@ -72,7 +75,7 @@ div.wrapper {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0;
-        background: #F0F0F0;;
+        // background: #F0F0F0;
         ul.product-grid {
             width: 60rem;
             margin: 0 auto;
@@ -92,7 +95,23 @@ div.wrapper {
                 p.bold {
                     font-weight: bold;
                 }
-                div.product-img {
+                img.add-to-cart {
+                        width: 2rem;
+                        height: 2rem;
+                        color: black;
+                        grid-column: 3;
+                        display: flex;
+                        justify-self: flex-end;
+                }
+                img.add-to-cart:hover {
+                        width: 2.1rem;
+                        height: 2.1rem;
+                    }
+                    img.add-to-cart:active {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                div.product {
                     background: #EBEBEB;
                     border-radius: 1rem;
                     height: 12rem;
@@ -103,23 +122,23 @@ div.wrapper {
                     -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
                     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-                    img.add-to-cart {
-                        width: 2rem;
-                        height: 2rem;
-                        color: black;
-                        grid-column: 3;
-                        display: flex;
-                        justify-self: flex-end;
-                    }
-                    img.add-to-cart:hover {
-                        width: 2.1rem;
-                        height: 2.1rem;
-                    }
-                    img.add-to-cart:active {
-                    width: 2rem;
-                    height: 2rem;
-                    }
-                    img.product {
+                    // img.add-to-cart {
+                    //     width: 2rem;
+                    //     height: 2rem;
+                    //     color: black;
+                    //     grid-column: 3;
+                    //     display: flex;
+                    //     justify-self: flex-end;
+                    // }
+                    // img.add-to-cart:hover {
+                    //     width: 2.1rem;
+                    //     height: 2.1rem;
+                    // }
+                    // img.add-to-cart:active {
+                    // width: 2rem;
+                    // height: 2rem;
+                    // }
+                    img.product-img {
                         display: flex;
                         justify-self: center;
                         align-self: center;

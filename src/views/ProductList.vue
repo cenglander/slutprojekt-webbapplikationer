@@ -1,26 +1,27 @@
 <template>
-    <div class="wrapper">    
-    <div class="product-list-container">
+    <div class="wrapper">
         <Product v-if="getSelectedProduct!=null" />
-        <Header />
-        <Cart v-if="getCartVisibility" />
-        <ul class="product-grid">
-            <li v-for='product in getProductList'
-                :key="product._id">
-                <div class="product-img"
-                    @click="showProduct(product)">
-                    <img class="product" 
-                        :src="require('@/assets/img/' + product.imgFile)" />
-                    <img class="add-to-cart"
-                        :src="require('@/assets/img/add-circle-outline.svg')" 
-                        @click="addToCart(product)">    
-                </div>
-                <p>{{ product.title }}</p>
-                <p>{{ product.shortDesc }}</p>
-                <p class="bold">{{ product.price }} SEK</p> 
-            </li>   
-        </ul>
-    </div>
+        <!-- <Header /> -->
+        <div class="product-list-container">
+            <Header />
+            <Cart v-if="getCartVisibility" />
+            <ul class="product-grid">
+                <li v-for='product in getProductList'
+                    :key="product._id">
+                    <div class="product-img"
+                        @click="showProduct(product)">
+                        <img class="product" 
+                            :src="require('@/assets/img/' + product.imgFile)" />
+                        <img class="add-to-cart"
+                            :src="require('@/assets/img/add-circle-outline.svg')" 
+                            @click="addToCart(product)">    
+                    </div>
+                    <p>{{ product.title }}</p>
+                    <p>{{ product.shortDesc }}</p>
+                    <p class="bold">{{ product.price }} SEK</p> 
+                </li>   
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -64,11 +65,10 @@ export default {
 
 <style scoped lang="scss">
 div.wrapper {
-    margin: 0 auto;
-    padding: 0;
     width: 100vw;
-
+    height: 100vh;
     div.product-list-container {
+        z-index: 3;
         max-width: 1000px;
         margin: 0 auto;
         padding: 0;

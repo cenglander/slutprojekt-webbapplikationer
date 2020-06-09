@@ -23,26 +23,6 @@
                 </li>   
             </ul>
         </div>
-        <Header />
-        <Cart v-if="getCartVisibility" />
-        <ul class="product-grid">
-            <li v-for='product in getProductList'
-                :key="product._id">
-                <div class="product">
-                    <img class="add-to-cart"
-                        :src="require('@/assets/img/add-circle-outline.svg')" 
-                        @click="addToCart(product)">
-                    <div class="product-inner"
-                        @click="showProduct(product)">
-                        <img class="product-img" 
-                            :src="require('@/assets/img/' + product.imgFile)" />
-                    </div>
-                </div>
-                <p>{{ product.title }}</p>
-                <p>{{ product.shortDesc }}</p>
-                <p class="bold">{{ product.price }} SEK</p> 
-            </li>   
-        </ul>
     </div>
 </template>
 
@@ -74,6 +54,7 @@ export default {
             this.$store.commit('addProductToCart', product)
         },
         showProduct(product) {
+            window.scrollTo(0, 0)
             this.$store.commit('setSelectedProduct', product)
         },
     },

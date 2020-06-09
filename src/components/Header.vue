@@ -60,6 +60,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: #D8D8D8;
     .nav {
         ul {
             list-style: none;

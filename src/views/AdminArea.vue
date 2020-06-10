@@ -181,6 +181,9 @@ export default {
 
 <style scoped lang="scss">
 .admin-area-container {
+  -webkit-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
   padding-top: 5rem;
   max-width: 1000px;
   margin: 0 auto;

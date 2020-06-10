@@ -81,6 +81,7 @@ export default {
         align-items: center;
         width: 100%;
         height: 100%;
+        position: relative;
 
         .home-admin {
 
@@ -110,6 +111,13 @@ export default {
 
         .central {
             display: flex;
+            h1 {
+                font-size: 3rem;
+                color: black;
+                -webkit-text-fill-color: white;
+                -webkit-text-stroke-width: 1px;
+                -webkit-text-stroke-color: black;
+            }
         }
     
         .user-cart {

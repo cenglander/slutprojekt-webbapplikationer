@@ -1,6 +1,7 @@
 <template>
     <div class="my-account">
         <Header :CurrentLocation="'My Account'"/>
+        <Cart v-if="getCartVisibility" />
         <div class="userPresent" v-if="getUser">
             <h1>Profile: {{getUser.role}}</h1>
             <div class="profile">
@@ -62,6 +63,7 @@
 
 <script>
 import Header from '@/components/Header'
+import Cart from '@/components/Cart'
 
 export default {
     name: 'MyAccount',
@@ -71,7 +73,8 @@ export default {
     }},
 
     components: {
-        Header
+        Header,
+        Cart,
     },
 
     methods: {
@@ -111,7 +114,10 @@ export default {
         },
         getCurrentOrder() {
             return this.$store.state.awaitedOrder.items
-        }
+        },
+        getCartVisibility() {
+            return this.$store.state.showCart
+        },
     },
     async created() {
         this.$store.commit('restoreSession')

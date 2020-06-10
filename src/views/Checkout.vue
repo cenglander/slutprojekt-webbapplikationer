@@ -1,7 +1,6 @@
 <template>
     <div class="checkout-container">
-        <Header/>
-        <h1 class="checkoutText">Checkout</h1>
+        <Header :CurrentLocation="'Checkout'"/>
         <ul class="items">
             <li class="item"    v-for="(item, index) in getProductsInCart"
                                 :key="index">

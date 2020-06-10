@@ -132,8 +132,10 @@ export default {
     loginAdmin() {
       this.$store.dispatch("logInUser", this.admin);
     },
-    createProduct() {
-      this.$store.dispatch("createProduct", this.product);
+    async createProduct() {
+      let response = await this.$store.dispatch("createProduct", this.product);
+      this.activateCreateMode = false
+      return response
     },
     updateProduct() {
       this.$store.dispatch("updateProduct", this.updateProductForm);
@@ -141,6 +143,7 @@ export default {
     },
     deleteProduct(product) {
       if (confirm("Are you sure?")) {
+        window.scrollTo(0, 0)
         this.$store.dispatch("deleteProduct", product);
       }
     },

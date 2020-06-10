@@ -153,9 +153,9 @@ export default new Vuex.Store({
       let token = sessionStorage.getItem('sinus-token')
       let response = await API.createProduct(token, product)
       if (response.status == 200) {
-        context.dispatch('loadProductList')
+        response = await context.dispatch('loadProductList')
       }
-      return response.data
+      return response
     },
 
     async updateProduct(context, updatedProduct) {
@@ -176,7 +176,7 @@ export default new Vuex.Store({
 
     async deleteProduct(context, product) {
       let token = sessionStorage.getItem('sinus-token')
-      let response = API.deleteProduct(token, product)
+      let response = await API.deleteProduct(token, product)
       if (response.status == 200) {
         context.dispatch('loadProductList')
       }

@@ -60,7 +60,7 @@ async function createProduct(token, product) {
         },
         body : JSON.stringify(product)
     }) 
-    return response.json() // message:  product: 
+    return response // message:  product: 
 }
 
 async function updateProduct(token, product) {
@@ -84,7 +84,7 @@ async function deleteProduct(token, product) {
         },
         body : JSON.stringify(product)
     }) 
-    return response.json()  // status: 200 for success and 400 for error, message: 
+    return response  // status: 200 for success and 400 for error, message: 
 }
 
 async function getAllOrders(token) {

@@ -68,7 +68,6 @@ export default {
 div.wrapper {
     margin: 0 auto;
     padding: 0;
-    width: 100vw;
     background: #F0F0F0;
     div.product-list-container {
         max-width: 1000px;

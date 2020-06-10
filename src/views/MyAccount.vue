@@ -143,7 +143,7 @@ export default {
 <style scoped lang="scss">
 
 .my-account {
-    margin: auto;
+    margin: 0 auto;
     background-color: #F0F0F0;
     display: flex;
     align-items: center;

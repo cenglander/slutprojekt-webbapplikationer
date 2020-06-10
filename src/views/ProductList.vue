@@ -66,8 +66,10 @@ export default {
 
 <style scoped lang="scss">
 div.wrapper {
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0;
+    padding-top: 9rem;
     background: #F0F0F0;
     div.product-list-container {
         max-width: 1000px;

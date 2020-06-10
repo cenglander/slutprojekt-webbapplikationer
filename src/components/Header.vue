@@ -70,8 +70,10 @@ export default {
     flex-direction: row;
     justify-content: center;
     background-color: #D8D8D8;
-    width: 100%;
+    width: 1000px;
     height: 5rem;
+    position: fixed;
+    top: 0;
 
     .nav {
         list-style: none;

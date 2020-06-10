@@ -115,6 +115,7 @@ export default {
     align-items: center;
     flex-direction: column;
     max-width: 1000px;
+    min-height: 100vh;
 
     .items {
         display: flex;

@@ -70,6 +70,7 @@ export default {
 <style scoped>
 .registration-container {
   max-width: 1000px;
+  min-height: 100vh;
   margin: 0 auto;
   background: #f0f0f0;
   display: flex;

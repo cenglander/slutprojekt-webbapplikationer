@@ -143,6 +143,7 @@ export default {
 <style scoped lang="scss">
 
 .my-account {
+    padding-top: 4rem;
     margin: 0 auto;
     background-color: #F0F0F0;
     display: flex;
@@ -152,6 +153,9 @@ export default {
     min-height: 100vh;
 
     .currentOrder {
+        -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -208,6 +212,9 @@ export default {
         flex-direction: column;
 
         .profile {
+            -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 
             background-color: #EBEBEB;
             min-width: 40rem;
@@ -255,6 +262,9 @@ export default {
         .orders {
 
             .listOfOrders {
+                -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 
                 background-color: #EBEBEB;
                 min-width: 40rem;

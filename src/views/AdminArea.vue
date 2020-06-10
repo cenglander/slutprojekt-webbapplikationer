@@ -178,6 +178,7 @@ export default {
 
 <style scoped lang="scss">
 .admin-area-container {
+  padding-top: 5rem;
   max-width: 1000px;
   margin: 0 auto;
   background: #F0F0F0;

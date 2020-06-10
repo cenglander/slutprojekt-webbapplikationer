@@ -140,6 +140,12 @@ export default {
                 padding: 0;
                 max-height: 2rem;
                 max-width: 2rem;
+                &:hover {
+                    transform: scale(1.06);
+                }
+                &:focus {
+                    transform: scale(0.97);
+                }
                 img {
                     height: 2rem;
                     width: 2rem;
@@ -158,14 +164,20 @@ export default {
     }
 }
 .checkout-button {
-  cursor: pointer;
-  outline: 0;
-  width: 10rem;
-  padding: 1rem;
-  border-radius: 3rem;
-  bottom: 2rem;
-  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    outline: 0;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 3rem;
+    bottom: 2rem;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    &:hover {
+        transform: scale(1.01);
+    }
+    &:focus {
+        transform: scale(0.97);
+    }
 }
 </style>

@@ -42,6 +42,7 @@ position: relative;
         img.cart-button {
         width: 3rem;
         height: 3rem;
+        cursor: pointer;
         }
         .amountBubble {
             width: 1.2rem;

@@ -155,6 +155,8 @@ input:focus, textarea:focus {
     outline: none;
 }
 .create-button {
+  cursor: pointer;
+  outline: 0;
   font-size: 1rem;
   width: 10rem;
   padding: 1rem;
@@ -177,7 +179,6 @@ input:focus, textarea:focus {
 
 }
 .userCreated button {
-  border: none;
   width: 7rem;
   height: 3rem;
   margin: 1.3rem;

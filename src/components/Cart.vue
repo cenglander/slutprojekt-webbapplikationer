@@ -132,6 +132,7 @@ export default {
                 max-height: 3rem;
             }
             button {
+                cursor: pointer;
                 background-color: transparent;
                 border: none;
                 color: none;
@@ -157,9 +158,14 @@ export default {
     }
 }
 .checkout-button {
+  cursor: pointer;
+  outline: 0;
   width: 10rem;
   padding: 1rem;
   border-radius: 3rem;
   bottom: 2rem;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 </style>

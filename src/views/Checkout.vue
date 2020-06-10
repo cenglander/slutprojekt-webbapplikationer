@@ -242,6 +242,7 @@ ul, li {
 }
 button {
     outline: 0;
+    cursor: pointer;
 }
 
 </style>

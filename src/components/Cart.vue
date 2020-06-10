@@ -75,7 +75,7 @@ export default {
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -91,11 +91,7 @@ export default {
     background-color: rgba(0,0,0,0.5);
 }
 .cart-container {
-    margin-bottom: 25rem;
     z-index: 7;
-    // position: fixed;
-    // position: absolute;
-    // left: 20%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -127,6 +123,9 @@ export default {
             grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
             min-width: 35rem;
             background-color: #F1F1F1;
+            -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
             img {
                 max-width: 3rem;
                 max-height: 3rem;

@@ -30,7 +30,7 @@
             <p>Zip:</p>
             <input type="numbers" v-model="user.adress.zip" placeholder="" />
         </div>
-      <button class="create-button" v-on:click="createUser">create account</button>
+      <button class="create-button" v-on:click="createUser">Create Account</button>
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
           city: "",
           zip: ""
         }
-      }
+      },
     };
   },
   methods: {
@@ -63,6 +63,9 @@ export default {
       this.$store.commit("changeCartVisibility", false);
       this.$store.commit("changeLoginVisibility", false);
     }
+  },
+  created() {
+    this.$store.state.showCartButton = false;
   }
 };
 </script>
@@ -99,12 +102,18 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 26rem;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 .password-container, .name-container, .city-container {
     background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     width: 26rem;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 p {
     padding-left: 2rem;
@@ -119,10 +128,14 @@ input:focus, textarea:focus {
     outline: none;
 }
 .create-button {
+  font-size: 1rem;
   width: 10rem;
   padding: 1rem;
   border-radius: 3rem;
   position: absolute;
   bottom: 2rem;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 </style>

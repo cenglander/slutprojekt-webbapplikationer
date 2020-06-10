@@ -185,7 +185,9 @@ export default {
                 grid-template-columns: 1fr 3fr 1fr 2fr 1fr;
                 width: 35rem;
                 background-color: #F1F1F1;
-
+                -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
                 img {
                     width: 3rem;
                     height: 3rem;
@@ -243,7 +245,9 @@ export default {
                     grid-template-columns: 2fr 4fr;
                     max-width: 22rem;
                     background-color: #F1F1F1;
-
+                    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
                 }
             }
             .picture {
@@ -288,6 +292,9 @@ export default {
                     list-style: none;
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
                 }
             }
         }

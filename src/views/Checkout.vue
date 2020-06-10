@@ -145,6 +145,9 @@ export default {
             grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
             min-width: 35rem;
             background-color: #F1F1F1;
+            -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
             img {
                 max-width: 3rem;
                 max-height: 3rem;
@@ -187,6 +190,9 @@ export default {
             min-width: 35rem;
             max-width: 600px;
             font-size: 1.2rem;
+            -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
         }
         .sum {
             display: flex;

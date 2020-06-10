@@ -1,6 +1,7 @@
 <template>
-    <div class="cart-modal" v-if="showModal" v-on:click="toggleModal">
-        <div class="cart-container">
+    <div class="cart-wrapper" v-if="showCart">
+        <div class="cart-modal" v-on:click="toggleCart" ></div>
+        <div class="cart-container" >
             <ul class="items">
             <li class="item"    v-for="(item, index) in getProductsInCart"
                                 :key="index">
@@ -28,7 +29,6 @@
 export default {
     name: 'Cart',
     data: () => ({
-        showModal: true
     }),
     computed: {
         getProductsInCart() {
@@ -48,6 +48,9 @@ export default {
                 sum += itemInCart.amount*itemInCart.product.price
             }
             return sum
+        },
+        showCart() {
+            return this.$store.state.showCart
         }
     },
     methods: {
@@ -60,16 +63,39 @@ export default {
         goToCheckout() {
             this.$router.push('/checkout')
         },
-        toggleModal() {
-            this.showModal = !this.showModal
+        toggleCart() {
+            this.$store.state.showCart = !this.$store.state.showCart
         }
     }
 }
 </script>
 
 <style scoped lang="scss">
+.cart-wrapper {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-modal {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.5);
+}
 .cart-container {
-    margin: 0 auto;
+    margin-bottom: 25rem;
+    z-index: 7;
+    // position: fixed;
+    // position: absolute;
+    // left: 20%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -84,6 +110,7 @@ export default {
         min-width: 40rem;
         max-width: 800px;
         margin: 0;
+        padding-left: 0;
         padding-top: 3.5rem;
         padding-bottom: 3.5rem;
         border-radius: 2rem;
@@ -128,18 +155,6 @@ export default {
     p {
         margin: 1rem;
     }
-}
-
-.cart-modal {
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
 }
 .checkout-button {
   width: 10rem;

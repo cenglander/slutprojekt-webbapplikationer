@@ -5,11 +5,16 @@
 
 #### Arbetssätt
 -Trello board med bl.a. kolumnerna Arbetssätt, Design, Backlog, Sprint backlog och Done.
+
  --Arbetssätt: regler för Gitflow Workflow, i vilken ordning saker ska göras, mm
+ 
  --Design: Mockup samt idéplank
+ 
  --Backlog: Indelad i views och komponenter som rubriker. Vi skrev User stories under varje och sedan mer tekniska tasks i dessa.
+ 
  --Sprint Backlog: Samma indelning som Backlog. Man drog User stories till denna kolumn och satte sitt namn på. 
  Eftersom vi i stort sett alltid kommunicerade i Discord samtidigt, hade vi en ständig dialog om vem som höll på med vad/vilka filer och vad som var viktigt att göra härnäst.
+ 
  --Done: Drog User stories hit då checklistor med tasks var avbockade.
 
 - - - - - 

@@ -35,8 +35,15 @@
         </div>
       <button class="create-button" v-on:click="createUser">Create Account</button>
     </div>
+
     <div class="userCreated" v-else>
       <h1>User created!</h1>
+      <router-link :to="'productlist'">
+        <button>HOME</button>
+      </router-link>
+      <router-link :to="'myaccount'">
+        <button>PROFILE</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -77,6 +84,8 @@ export default {
       } else {
         this.userCreated = true
       }
+
+      this.$store.dispatch('logInUser', { email: this.user.email, pass: this.user.password})
         
     }
   },
@@ -155,5 +164,33 @@ input:focus, textarea:focus {
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+}
+.userCreated {
+  background-color: white;
+  width: 30rem;
+  height: 12rem;
+  border-radius: 2rem;
+  padding-top: 1rem;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+
+}
+.userCreated button {
+  border: none;
+  width: 7rem;
+  height: 3rem;
+  margin: 1.3rem;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+
+}
+.userCreated button:hover {
+  transform: scale(1.1);
+}
+.userCreated button:active {
+  transform: scale(0.9);
 }
 </style>

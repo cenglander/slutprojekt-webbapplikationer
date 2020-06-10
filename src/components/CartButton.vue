@@ -1,17 +1,16 @@
 <template>
-    <div>
+    <div class="cart-button-wrapper">
         <img class="cart-button"
             :src="require('@/assets/img/cart-outline.svg')"
             @click="showHideCart()">
-        <p>{{ getAmountInCart }}</p>
+        <div class="amountBubble" v-if="getAmountInCart>0">{{ getAmountInCart }}</div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'CartButton',
-    data: () => ({
-    }),
+
     computed: {
         getAmountInCart() {
             return this.$store.getters.getAmountInCart
@@ -35,14 +34,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    div {
+    .cart-button-wrapper {
+
+position: relative;
+
         img.cart-button {
         width: 3rem;
         height: 3rem;
         }
-        p {
-            margin: 0;
-            font-weight: bold;
+        .amountBubble {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            color: white;
+            background-color: red;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     // div.cart-button {

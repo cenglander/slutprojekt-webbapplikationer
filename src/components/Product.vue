@@ -43,7 +43,7 @@ export default {
 
 <style scoped lang="scss">
 div.product-container {
-    width: 100vw;
+    width: 1000px;
     height: 100%;
     z-index: 5;
     position: absolute;
@@ -51,7 +51,8 @@ div.product-container {
     justify-content: center;
 
     div.transparent-layer {
-    margin: 0 auto;
+    top: 0;
+    left: 0;
     padding: 0;
     width: 100vw;
     height: 100%;
@@ -133,7 +134,7 @@ div.product-container {
         p.longDesc {
             grid-area: long;
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
     }
 }

@@ -16,7 +16,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('assets/img/skate-park.jpg');
-  background-position: cover;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   #app {

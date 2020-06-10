@@ -65,7 +65,7 @@ export default {
 
 <style scoped lang="scss">
 .header-wrapper {
-    z-index: 9;
+    z-index: 5;
     display: flex;
     flex-direction: row;
     justify-content: center;

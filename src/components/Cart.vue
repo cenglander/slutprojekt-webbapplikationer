@@ -72,6 +72,7 @@ export default {
 
 <style scoped lang="scss">
 .cart-wrapper {
+    z-index: 6;
     left: 0;
     top: 0;
     width: 100vw;
@@ -87,11 +88,11 @@ export default {
     width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: 5;
+    z-index: 7;
     background-color: rgba(0,0,0,0.5);
 }
 .cart-container {
-    z-index: 7;
+    z-index: 8;
     display: flex;
     align-items: center;
     flex-direction: column;

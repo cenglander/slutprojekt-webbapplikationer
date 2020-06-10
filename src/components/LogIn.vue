@@ -92,6 +92,9 @@ export default {
             this.logedIn = false
             this.closeLogin()
             this.$store.state.currentUser = null
+            this.$store.state.awatedOrder = []
+            this.$router.push('productlist')
+
         },
         goToProfile() {
             this.closeLogin()

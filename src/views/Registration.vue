@@ -1,7 +1,10 @@
 <template>
   <div class="registration-container">
     <Header :CurrentLocation="'Registration'"/>
-    <div class="create-account-container">
+    <div class="create-account-container" v-if="!userCreated">
+      <div class="error" v-if="error" >
+        <p>{{error}}</p>
+      </div>
         <div class="email-container">
             <p>Email:</p>
             <input type="email" v-model="user.email" placeholder="" />
@@ -32,6 +35,9 @@
         </div>
       <button class="create-button" v-on:click="createUser">Create Account</button>
     </div>
+    <div class="userCreated" v-else>
+      <h1>User created!</h1>
+    </div>
   </div>
 </template>
 
@@ -44,6 +50,8 @@ export default {
   },
   data() {
     return {
+      userCreated: false,
+      error: "",
       user: {
         email: "",
         password: "",
@@ -58,13 +66,23 @@ export default {
     };
   },
   methods: {
-    createUser() {
-      this.$store.dispatch("registerUser", this.user);
+    async createUser() {
+      let response = await this.$store.dispatch("registerUser", this.user);
       this.$store.commit("changeCartVisibility", false);
       this.$store.commit("changeLoginVisibility", false);
+      console.log(response);
+      
+      if (response.errors) {
+        this.error = response.errors[0]
+      } else {
+        this.userCreated = true
+      }
+        
     }
   },
   created() {
+    this.userCreated = false
+    this.error = ""
     this.$store.state.showCartButton = false;
   }
 };

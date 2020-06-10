@@ -132,6 +132,7 @@ export default {
                 max-height: 3rem;
             }
             button {
+                cursor: pointer;
                 background-color: transparent;
                 border: none;
                 color: none;

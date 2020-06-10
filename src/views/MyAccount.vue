@@ -2,7 +2,7 @@
     <div class="my-account">
         <Header :CurrentLocation="'My Account'"/>
         <Cart v-if="getCartVisibility" />
-        <div class="currentOrder" v-if="getCurrentOrder">
+        <div class="currentOrder" v-if="getCurrentOrder.length">
             <h1>Current Order</h1>
             <ul>
                 <li v-for="item in getCurrentOrder"

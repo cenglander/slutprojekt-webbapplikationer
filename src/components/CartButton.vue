@@ -1,5 +1,5 @@
 <template>
-    <div class="cart-button-wrapper">
+    <div class="cart-button-wrapper" v-if="showCartButton">
         <img class="cart-button"
             :src="require('@/assets/img/cart-outline.svg')"
             @click="showHideCart()">

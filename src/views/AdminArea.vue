@@ -337,6 +337,9 @@ export default {
   bottom: 2rem;
   font-size: 1rem;
   margin: 2rem;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 .product-in-create-container {
   height: 21rem;

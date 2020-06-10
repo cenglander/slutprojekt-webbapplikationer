@@ -197,7 +197,7 @@ export default new Vuex.Store({
     async addOrder(context, order) {
       let token = sessionStorage.getItem('sinus-token')
       let response = await API.addOrder(token, order)
-      context.state.awaitedOrder = order
+      context.state.awaitedOrder = context.state.productsInCart
       context.state.order = []
       context.state.productsInCart = []
       context.commit('saveSession')

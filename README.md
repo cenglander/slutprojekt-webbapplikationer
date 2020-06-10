@@ -3,7 +3,7 @@
 ## Kung-Fu Pirates!
 ### Charlotte E, Joel S, Ivan J
 
-#### Arbetssätt
+### Arbetssätt:
 -Trello board med bl.a. kolumnerna Arbetssätt, Design, Backlog, Sprint backlog och Done.
 
  --Arbetssätt: regler för Gitflow Workflow, i vilken ordning saker ska göras, mm

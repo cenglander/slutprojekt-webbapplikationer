@@ -43,13 +43,12 @@ export default {
 
 <style scoped lang="scss">
 div.product-container {
-    width: 1000px;
+    width: 100vw;
     height: 100%;
-    // padding: 7rem 0 0 0;
-    // margin: 0 auto;
-    // left: 50%;
     z-index: 5;
-    // position: absolute;
+    position: absolute;
+    display: flex;
+    justify-content: center;
 
     div.transparent-layer {
     margin: 0 auto;
@@ -62,15 +61,11 @@ div.product-container {
     }
     div.product {
         background: #EBEBEB;
-        // position: relative;
         position: absolute;
         z-index: 15;
-        // margin: 0 auto;
-        left: 25%;
-        // right: 50%;
         width: 36rem;
         height: 20rem;
-        margin: 5rem auto;
+        margin: 8rem auto;
         padding: 2rem;
         border-radius: 2rem;
         display: grid;
@@ -82,10 +77,11 @@ div.product-container {
             "product-img product-img . long long ."
             ". . . long long .";
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 4rem 3rem 2rem 2rem 6rem 3rem;
+        grid-template-rows: 4rem 3rem 2rem 2rem 6rem 4rem;
         -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+
         img.close {
             grid-area: close;
             width: 2rem;
@@ -120,6 +116,7 @@ div.product-container {
         img.product-img {
             grid-area: product-img;
             width: 15rem;
+            
         }
         h2.title {
             grid-area: title;

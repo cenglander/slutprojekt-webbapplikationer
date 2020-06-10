@@ -3,9 +3,6 @@
         <div class="transparent-layer"
                 @click="unSelectProduct(selectedProduct)"></div>
         <div class="product">
-            <img class="close"
-                    :src="require('@/assets/img/close-circle-outline.svg')" 
-                    @click="unSelectProduct(selectedProduct)">
             <img class="add-to-cart"
                     :src="require('@/assets/img/add-circle-outline.svg')" 
                     @click="addToCart(selectedProduct)"> 
@@ -45,7 +42,7 @@ export default {
 div.product-container {
     width: 1000px;
     height: 100%;
-    z-index: 5;
+    z-index: 6;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -71,53 +68,39 @@ div.product-container {
         border-radius: 2rem;
         display: grid;
         grid-template-areas: 
-            "product-img product-img . . . close"
-            "product-img product-img . title add-img ."
-            "product-img product-img . short short ."
-            "product-img product-img . price price ."
-            "product-img product-img . long long ."
-            ". . . long long .";
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 4rem 3rem 2rem 2rem 6rem 4rem;
+            ". . . add-img"
+            "product-img title title ."
+            "product-img short . ."
+            "product-img price . ."
+            "product-img long long ."
+            ". long long .";
+        grid-template-columns: 4fr 2fr 1fr 1fr;
+        grid-template-rows: 3rem 3rem 2rem 2rem 6rem 3rem;
         -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 
-        img.close {
-            grid-area: close;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            justify-self: flex-end;
-        }
-        img.close:hover {
-            width: 2.1rem;
-            height: 2.1rem;
-        }
-        img.close:active {
-            width: 2rem;
-            height: 2rem;
-        }
         img.add-to-cart {
             grid-area: add-img;
-            width: 5rem;
-            height: 5rem;
+            width: 3.5rem;
+            height: 3.5rem;
             color: black;
-            display: flex;
-            justify-self: flex-end;
         }
         img.add-to-cart:hover {
-            width: 5.1rem;
-            height: 5.1rem;
+            width: 3.6rem;
+            height: 3.6rem;
         }
         img.add-to-cart:active {
-            width: 5rem;
-            height: 5rem;
+            width: 3.5rem;
+            height: 3.5rem;
         }
         img.product-img {
             grid-area: product-img;
             width: 15rem;
-            
+            display: flex;
+            justify-self: flex-end;
+            align-self: center;
+            margin-right: 1rem;
         }
         h2.title {
             grid-area: title;

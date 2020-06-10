@@ -161,6 +161,8 @@ export default new Vuex.Store({
     async updateProduct(context, updatedProduct) {
       let token = sessionStorage.getItem('sinus-token')
       let response = await API.updateProduct(token, updatedProduct)
+      console.log(response.status);
+      
       if (response.status == 200) {
         context.dispatch('loadProductList')
       }

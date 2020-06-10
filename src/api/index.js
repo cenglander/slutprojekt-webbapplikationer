@@ -72,7 +72,7 @@ async function updateProduct(token, product) {
         },
         body : JSON.stringify(product)
     }) 
-    return response.json() // status: 200 for success 400 for error, message: , data: updated product if status 200
+    return response // status: 200 for success 400 for error, message: , data: updated product if status 200
 }
 
 async function deleteProduct(token, product) {

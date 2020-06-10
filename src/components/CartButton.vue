@@ -28,6 +28,7 @@ export default {
         // },
         showHideCart() {
             this.$store.state.showCart = !this.$store.state.showCart
+            this.$store.state.showLogIn = false
         },
     },
 }

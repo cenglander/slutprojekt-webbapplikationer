@@ -1,7 +1,6 @@
 <template>
   <div class="registration-container">
-    <Header />
-    <h1>Registration</h1>
+    <Header :CurrentLocation="'Registration'"/>
     <div class="create-account-container">
         <div class="email-container">
             <p>Email:</p>
@@ -71,6 +70,7 @@ export default {
 <style scoped>
 .registration-container {
   max-width: 1000px;
+  min-height: 100vh;
   margin: 0 auto;
   background: #f0f0f0;
   display: flex;

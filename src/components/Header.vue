@@ -169,4 +169,11 @@ a:hover {
 a:active {
   text-decoration: none;
 }
+img {
+        &:hover {
+            transform: scale(1.05);
+        }
+        &:focus {
+            transform: scale(0.97);
+        }}
 </style>

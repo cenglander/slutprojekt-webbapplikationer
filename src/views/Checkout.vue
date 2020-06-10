@@ -237,6 +237,7 @@ export default {
         width: 30rem;
         border: none;
         border-radius: 2rem;
+
     }
 }
 ul, li {
@@ -246,6 +247,21 @@ ul, li {
 button {
     outline: 0;
     cursor: pointer;
+        &:hover {
+            transform: scale(1.01);
+        }
+        &:focus {
+            transform: scale(0.99);
+        }
+        img {
+            &:hover {
+                transform: scale(1.06);
+            }
+            &:focus {
+                transform: scale(0.95);
+            }
+
+        }
 }
 
 </style>

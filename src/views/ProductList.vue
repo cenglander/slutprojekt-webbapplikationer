@@ -57,6 +57,7 @@ export default {
         showProduct(product) {
             window.scrollTo(0, 0)
             this.$store.commit('setSelectedProduct', product)
+            this.$store.state.showLogIn = false
         },
     },
     created() {

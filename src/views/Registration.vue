@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .registration-container {
   -webkit-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
@@ -167,8 +167,15 @@ input:focus, textarea:focus {
   position: absolute;
   bottom: 2rem;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  
+        &:hover {
+            transform: scale(1.02);
+        }
+        &:focus {
+            transform: scale(0.97);
+        }
 }
 .userCreated {
   background-color: white;
@@ -192,7 +199,7 @@ input:focus, textarea:focus {
 
 }
 .userCreated button:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 .userCreated button:active {
   transform: scale(0.9);

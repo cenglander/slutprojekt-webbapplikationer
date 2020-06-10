@@ -9,11 +9,11 @@
         <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
         @click="exitCreateMode">
         <div class="product-input-container">
-        <input type="text" v-model="product.title" placeholder="title" />
-        <input type="number" v-model="product.price" placeholder="price" />
-        <input type="text" v-model="product.shortDesc" placeholder="Short description" />
-        <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
-        <button class="add-button" @click="createProduct">Add Product</button>
+          <input type="text" v-model="product.title" placeholder="title" />
+          <input type="number" v-model="product.price" placeholder="price" />
+          <input type="text" v-model="product.shortDesc" placeholder="Short description" />
+          <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
+          <button class="add-button" @click="createProduct">Add Product</button>
         </div>
         <div class="product-in-create-container">
           <article class="product-in-create">
@@ -180,6 +180,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .admin-area-container {
   -webkit-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.75);
@@ -302,6 +303,12 @@ export default {
   outline: 0;
   padding: 1rem;
   border-radius: 3rem;
+    &:hover {
+      transform: scale(1.02);
+    }
+    &:focus {
+      transform: scale(0.97);
+    }
 }
 .add-product-button img {
   width: 5%;
@@ -334,11 +341,25 @@ export default {
   align-items: center;
   margin-bottom: 2rem;
 }
+.exit {
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:focus {
+      transform: scale(0.95);
+    }
+}
 .add-button {
   padding: 1rem;
   border-radius: 3rem;
   outline: 0;
   cursor: pointer;
+    &:hover {
+      transform: scale(1.01);
+    }
+    &:focus {
+      transform: scale(0.98);
+    }
 }
 .create-button {
   cursor: pointer;
@@ -350,8 +371,14 @@ export default {
   font-size: 1rem;
   margin: 2rem;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+    &:hover {
+      transform: scale(1.02);
+    }
+    &:focus {
+      transform: scale(0.97);
+    }
 }
 .product-in-create-container {
   height: 21rem;
@@ -377,5 +404,13 @@ export default {
 }
 .product-in-create select {
   margin: 1rem;
+}
+.icons img {
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:focus {
+      transform: scale(0.92);
+    }
 }
 </style>

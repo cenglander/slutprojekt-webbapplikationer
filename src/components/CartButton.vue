@@ -43,6 +43,12 @@ position: relative;
         width: 3rem;
         height: 3rem;
         cursor: pointer;
+        &:hover {
+            transform: scale(1.05);
+        }
+        &:focus {
+            transform: scale(0.97);
+        }
         }
         .amountBubble {
             width: 1.2rem;

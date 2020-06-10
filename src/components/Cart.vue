@@ -75,7 +75,7 @@ export default {
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ export default {
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     position: fixed;
     z-index: 5;
     background-color: rgba(0,0,0,0.5);

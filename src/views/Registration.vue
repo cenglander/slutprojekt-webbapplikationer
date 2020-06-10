@@ -84,6 +84,7 @@ export default {
   -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   margin-bottom: 5rem;
+  margin-top: 5rem;
   border-radius: 3rem;
   width: 45rem;
   height: 35rem;

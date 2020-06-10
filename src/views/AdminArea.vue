@@ -1,15 +1,9 @@
 <template>
   <div class="admin-area-container">
-    <Header />
-    <div class="add-product-button">
-      <img :src="require('@/assets/img/add-circle-outline.svg')"
-      @click="createMode"
-      />
-    </div>
-    <div class="user-container" v-if="getCurrentUser != null">
-      <p>User: {{getCurrentUser.name}}</p>
-      <p>Role: {{getCurrentUser.role}}</p>
-    </div>
+    <Header :CurrentLocation="'Admin Area'"/>
+    <button class="create-button" @click="createMode">
+      Create Product
+    </button>
     <div class="create-product-container" v-if="activateCreateMode">
       <div class="create-product">
         <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
@@ -19,7 +13,7 @@
         <input type="number" v-model="product.price" placeholder="price" />
         <input type="text" v-model="product.shortDesc" placeholder="Short description" />
         <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
-        <button class="create-button" @click="createProduct">Create Product</button>
+        <button class="add-button" @click="createProduct">Add Product</button>
         </div>
         <div class="product-in-create-container">
           <article class="product-in-create">
@@ -182,11 +176,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .admin-area-container {
   max-width: 1000px;
   margin: 0 auto;
-  background: #f0f0f0;
+  background: #F0F0F0;
 }
 .product-container {
   max-width: 800px;
@@ -245,6 +239,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 2rem;
 }
 .update-product .exit {
   padding: 1rem;
@@ -328,10 +323,19 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 2rem;
 }
-.create-button {
+.add-button {
   padding: 1rem;
   border-radius: 3rem;
+}
+.create-button {
+  width: 10rem;
+  padding: 1rem;
+  border-radius: 3rem;
+  bottom: 2rem;
+  font-size: 1rem;
+  margin: 2rem;
 }
 .product-in-create-container {
   height: 21rem;

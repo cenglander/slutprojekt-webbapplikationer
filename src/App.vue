@@ -24,7 +24,7 @@ body {
     h1, h2, h3, h4, h5 {
       font-family: 'Cardo', serif;
     }
-    p {
+    p, button, input, label {
       font-family: 'Josefin Sans', sans-serif;
     }
   }

@@ -86,7 +86,7 @@ div.wrapper {
             li {
                 margin: 1rem;
                 p {
-                    font-size: 0.8rem;
+                    font-size: 1rem;
                     padding: 0;
                     margin: 0 1rem;
                     text-align: left;

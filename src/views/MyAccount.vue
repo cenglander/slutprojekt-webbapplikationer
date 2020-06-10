@@ -2,6 +2,24 @@
     <div class="my-account">
         <Header :CurrentLocation="'My Account'"/>
         <Cart v-if="getCartVisibility" />
+        <div class="currentOrder" v-if="getCurrentOrder">
+            <h1>Current Order</h1>
+            <ul>
+                <li v-for="item in getCurrentOrder"
+                    :key="item.product._id">
+                    <img :src="require('@/assets/img/' + item.product.imgFile)" alt="Product Foto">    
+                    <p>{{item.product.title}}</p>
+                    <p>x {{item.amount}}</p>
+                    <p>Subtotal: </p>
+                    <p class="kr">{{item.amount*item.product.price}} kr</p>
+                </li>
+            </ul>
+            <div class="summary">
+                <p>Status: inProcess</p>
+                <p>Total: </p>
+                <h3>{{getSum}} kr</h3>
+            </div>
+        </div>
         <div class="userPresent" v-if="getUser">
             <h1>Profile: {{getUser.role}}</h1>
             <div class="profile">
@@ -33,7 +51,6 @@
             </div>
             <div class="orders">
                 <h1>Order History</h1>
-                <button :click="refreashOrders">Refreash</button>
                 <ul class="listOfOrders">
                     <li v-for="singleOrder in orders" 
                         :key="singleOrder._id">
@@ -45,18 +62,9 @@
                     </li>
                 </ul>
             </div>
-            <div v-if="getCurrentOrder">
-                {{getCurrentOrder}}
-            </div>
         </div>
         <div class="noUser" v-else>
             <h1 class="plsLogin">Please log in</h1>
-            <div v-if="getCurrentOrder">
-                <div  v-for="item in getCurrentOrder"
-                    :key="item">
-                    {{getProduct(item)}}
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -78,9 +86,6 @@ export default {
     },
 
     methods: {
-        async refreashOrders() {
-            this.orders = await this.$store.dispatch('getAllOrders')
-        },
         getTime(timeStamp) {
             var date = new Date(timeStamp)
             var hours = date.getHours()
@@ -103,7 +108,9 @@ export default {
             return year + `-` + month + `-` + day
         },
         getProduct(id) {
-            return this.$store.state.productList.filter(product => product._id === id)
+            let product = this.$store.state.productList.filter(product => product._id === id)
+            return product
+            
         }
 
     },
@@ -113,11 +120,18 @@ export default {
             return this.$store.state.currentUser
         },
         getCurrentOrder() {
-            return this.$store.state.awaitedOrder.items
+            return this.$store.state.awaitedOrder
         },
         getCartVisibility() {
             return this.$store.state.showCart
         },
+        getSum() {
+            let sum = 0
+            for(let item of this.$store.state.awaitedOrder) {
+                sum += item.amount*item.product.price
+            }
+            return sum
+        }
     },
     async created() {
         this.$store.commit('restoreSession')
@@ -137,7 +151,61 @@ export default {
     max-width: 1000px;
     min-height: 100vh;
 
+    .currentOrder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #EBEBEB;
+        min-width: 42rem;
+        max-width: 700px;
+        margin: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-radius: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+
+        ul {
+            padding: 0;
+            padding: 0;
+            margin: 0;
+
+            li:nth-child(even) {
+                background-color: white;
+            }
+
+            li {
+                margin: 0;
+                list-style: none;
+                display: grid;
+                grid-template-columns: 1fr 3fr 1fr 2fr 1fr;
+                width: 35rem;
+                background-color: #F1F1F1;
+
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                }
+                .kr {
+                    text-align: right;
+                    padding-right: 1rem;
+                }
+
+            }
+
+        }
+        .summary {
+            align-self: flex-end;
+            margin-right: 4.6rem;
+            text-align: right;
+        }
+
+    }
+
     .userPresent{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
         .profile {
 
@@ -173,7 +241,8 @@ export default {
             }
             .picture {
 
-                margin: auto;
+                margin-right: 3rem;
+                margin-top: 2rem;
 
                 img {
                     height: 11rem;

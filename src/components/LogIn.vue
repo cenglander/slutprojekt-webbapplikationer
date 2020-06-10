@@ -9,7 +9,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
             </div>
         </div>
-        
+        <p class="error" v-if="wrongInput">E-mail or password incorect!</p>
         <div class="logInForm" v-if="!logedIn">
             <form @submit.prevent="submit">
                 <div class="input-email">
@@ -60,8 +60,10 @@ export default {
             let response = null
             if (this.email !== `` && this.password !== ``) { // there are both email and password
                 response = await this.$store.dispatch('logInUser', { email : this.email, pass : this.password})
-                this.logedIn = true
-                this.closeLogin()
+                if (response == 200){
+                    this.logedIn = true
+                    this.closeLogin()
+                }
             } else if (!this.email && this.password) {
                 this.noEmailInput = true
             } else if (!this.password && this.email) {
@@ -70,9 +72,7 @@ export default {
                 this.noEmailInput = true
                 this.noPasswordInput = true
             }
-            if (response !== null  && response.status == 200) {
-                this.$store.state.showLogIn = !this.$store.state.showLogIn
-            } else {
+            if (response != 200) {
                 this.wrongInput = true
             }
         },
@@ -160,10 +160,12 @@ button, .close {
     }
 
     .upper {
+        
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
+
         h3 {
             font-size: 1.5rem;
             margin-right: 5rem;
@@ -172,6 +174,10 @@ button, .close {
         .close {
             margin-left: auto;
         }
+    }
+    .error {
+        color: red;
+        font-size: 0.8rem;
     }
     .logInForm {
         .input-email, .input-password {

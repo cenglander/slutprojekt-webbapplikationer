@@ -11,8 +11,6 @@ const URL=document.location.protocol+'//'+document.location.host+'/api'
 // /api/orders	POST	Skapar en ny order, se order-modell.
 
 async function logInUser(emailToSend, pass) {
-    console.log('in logInUser in API, email=' + emailToSend+", password=" + pass);
-    
     let response = await fetch(URL + '/auth/', {
         method: 'POST',
         headers: {
@@ -23,9 +21,7 @@ async function logInUser(emailToSend, pass) {
             password : pass
         })
     })
-    
     let status = response.status
-    
     let tokenAndUser = await response.json() // returns status 403 for wrong user
     tokenAndUser.status = status
     return tokenAndUser                      // returns {token: and user:}

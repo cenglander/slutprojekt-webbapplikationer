@@ -21,7 +21,8 @@
             <div class="user-cart">
                 <CartButton />
                 <div class="login-button" @click="showLogIn">
-                    <img :src="require('@/assets/img/person-outline.svg')" alt="User Button">
+                    <img :src="require('@/assets/img/person-outline.svg')" alt="User Button" v-if="getCurrentUser == null">
+                    <img :src="require('@/assets/img/person-outline-white.svg')" alt="User Button" v-else >
                 </div>
             </div>
             <LogIn/>
@@ -58,7 +59,11 @@ export default {
             } else {
                 return false
             }
+        },
+        getCurrentUser() {
+            return this.$store.state.currentUser
         }
+
     }
 }
 </script>
@@ -130,7 +135,7 @@ export default {
             align-items: center;
 
             .login-button {
-
+                cursor: pointer;
                 margin-left: 1rem;
                 margin-right: 1rem;
 

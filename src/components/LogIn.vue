@@ -92,7 +92,7 @@ export default {
             this.logedIn = false
             this.closeLogin()
             this.$store.state.currentUser = null
-            this.$store.state.awatedOrder = []
+            this.$store.state.awaitedOrder = []
             this.$router.push('productlist')
 
         },
@@ -132,6 +132,7 @@ export default {
 }
 button, .close {
     outline: none;
+    cursor: pointer;
     &:hover {
         transform: scale(1.05);
     }

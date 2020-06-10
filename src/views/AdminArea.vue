@@ -169,9 +169,9 @@ export default {
       this.activateUpdateMode = false;
     }
   },
-
   created() {
     this.$store.commit("restoreSession");
+    this.$store.state.showCartButton = false;
   }
 };
 </script>
@@ -292,6 +292,8 @@ export default {
   margin: 1rem;
 }
 .update-button {
+  cursor: pointer;
+  outline: 0;
   padding: 1rem;
   border-radius: 3rem;
 }
@@ -329,8 +331,12 @@ export default {
 .add-button {
   padding: 1rem;
   border-radius: 3rem;
+  outline: 0;
+  cursor: pointer;
 }
 .create-button {
+  cursor: pointer;
+  outline: 0;
   width: 10rem;
   padding: 1rem;
   border-radius: 3rem;

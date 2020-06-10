@@ -81,6 +81,7 @@ div.product-container {
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 
         img.add-to-cart {
+            cursor: pointer;
             grid-area: add-img;
             width: 3.5rem;
             height: 3.5rem;

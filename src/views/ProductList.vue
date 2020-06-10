@@ -48,6 +48,7 @@ export default {
         getCartVisibility() {
             return this.$store.state.showCart
         },
+
     },
     methods: {
         addToCart(product) {
@@ -114,6 +115,7 @@ div.wrapper {
                         }
                     }
                     img.add-to-cart {
+                        cursor: pointer;
                         width: 2rem;
                         height: 2rem;
                         margin: 0.8rem;

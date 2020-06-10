@@ -138,7 +138,7 @@ export default new Vuex.Store({
 
     async registerUser(_, userToRegister) {
       let response = await API.registerUser(userToRegister)
-      return response.status
+      return response
     },
 
     async getSingleproduct(context, productId) {

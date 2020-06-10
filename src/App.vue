@@ -15,6 +15,11 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  background-image: url('assets/img/skate-park-right.jpg'), url('assets/img/skate-park-left.jpg');
+  background-position: left, right;
+  background-attachment: fixed;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 35%, 35%;
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

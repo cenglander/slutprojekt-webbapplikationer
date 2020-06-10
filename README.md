@@ -1,5 +1,24 @@
 # Slutprojekt - Utveckling av Webbapplikationer och Agil utveckling
 
+## Kung-Fu Pirates!
+### Charlotte E, Joel S, Ivan J
+
+### Arbetssätt:
+-Trello board med bl.a. kolumnerna Arbetssätt, Design, Backlog, Sprint backlog och Done.
+
+ --Arbetssätt: regler för Gitflow Workflow, i vilken ordning saker ska göras, mm
+ 
+ --Design: Mockup samt idéplank
+ 
+ --Backlog: Indelad i views och komponenter som rubriker. Vi skrev User stories under varje och sedan mer tekniska tasks i dessa.
+ 
+ --Sprint Backlog: Samma indelning som Backlog. Man drog User stories till denna kolumn och satte sitt namn på. 
+ Eftersom vi i stort sett alltid kommunicerade i Discord samtidigt, hade vi en ständig dialog om vem som höll på med vad/vilka filer och vad som var viktigt att göra härnäst.
+ 
+ --Done: Drog User stories hit då checklistor med tasks var avbockade.
+
+- - - - - 
+
 ## Arbetssätt
 
 Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile och kom överens i gruppen vilka delar och hur ni ska inkorporera detta i erat arbete. Dokumentera vad ni kommer överens om i README.md i erat repository.
@@ -95,3 +114,25 @@ Det ska finnas en `Admin Area`-view med ett CRUD-gränssnitt för alla produkter
 } 
 ```
 
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

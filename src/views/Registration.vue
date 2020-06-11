@@ -6,32 +6,32 @@
         <p>{{error}}</p>
       </div>
         <div class="email-container">
-            <p>Email:</p>
-            <input type="email" v-model="user.email" placeholder="" />
+            <p :class="errorEmail" >Email:</p>
+            <input type="email" v-model="user.email" placeholder=""/>
         </div>
         <div class="password-container">
-            <p>Password:</p>
-            <input type="password" v-model="user.password" placeholder="" />
+            <p :class="errorPass">Password:</p>
+            <input type="password" v-model="user.password" placeholder=""/>
         </div>
         <div class="repeat-password-container">
-            <p>Repeat Password:</p>
-            <input type="password" v-model="user.repeatPassword" placeholder="" />
+            <p  :class="errorRePass">Repeat Password:</p>
+            <input type="password" v-model="user.repeatPassword" placeholder=""/>
         </div>
         <div class="name-container">
-            <p>Name:</p>
-            <input type="text" v-model="user.name" placeholder="" />
+            <p  :class="errorName">Name:</p>
+            <input type="text" v-model="user.name" placeholder=""/>
         </div>
         <div class="street-container">
-            <p>Street:</p>
-            <input type="text" v-model="user.adress.street" placeholder="" />
+            <p :class="errorStreet">Street:</p>
+            <input type="text" v-model="user.adress.street" placeholder=""/>
         </div>
         <div class="city-container">
-            <p>City:</p>
-            <input type="text" v-model="user.adress.city" placeholder="" />
+            <p  :class="errorCity">City:</p>
+            <input type="text" v-model="user.adress.city" placeholder=""/>
         </div>
         <div class="zip-container">
-            <p>Zip:</p>
-            <input type="numbers" v-model="user.adress.zip" placeholder="" />
+            <p :class="errorZip" >Zip:</p>
+            <input type="numbers" v-model="user.adress.zip" placeholder=""/>
         </div>
       <button class="create-button" v-on:click="createUser">Create Account</button>
     </div>
@@ -70,23 +70,106 @@ export default {
           zip: ""
         }
       },
+      vlidationErrors: {
+        email: false,
+        password: false,
+        repeatPassword: false,
+        name: false,
+        street: false,
+        city: false,
+        zip: false
+      }
     };
   },
+
+  computed: {
+    errorEmail() {
+      return { red : this.vlidationErrors.email}
+    },
+    errorPass() {
+      return { red :this.vlidationErrors.password}
+
+    },
+    errorRePass() {
+      return { red :this.vlidationErrors.repeatPassword}
+
+    },
+    errorName() {
+      return { red :this.vlidationErrors.name}
+
+    },
+    errorStreet() {
+      return { red :this.vlidationErrors.street}
+
+    },
+    errorCity() {
+      return { red :this.vlidationErrors.city}
+
+    },
+    errorZip() {
+      return { red :this.vlidationErrors.zip}
+
+    }
+  },
+
   methods: {
     async createUser() {
-      let response = await this.$store.dispatch("registerUser", this.user);
-      this.$store.commit("changeCartVisibility", false);
-      this.$store.commit("changeLoginVisibility", false);
-      console.log(response);
-      
-      if (response.errors) {
-        this.error = response.errors[0]
-      } else {
-        this.userCreated = true
-      }
-
-      this.$store.dispatch('logInUser', { email: this.user.email, pass: this.user.password})
+      if(this.validate()) {
+        let response = await this.$store.dispatch("registerUser", this.user);
+        this.$store.commit("changeCartVisibility", false);
+        this.$store.commit("changeLoginVisibility", false);
+        console.log(response);
         
+        if (response.errors) {
+          this.error = response.errors[0]
+        } else {
+          this.userCreated = true
+        }
+
+        this.$store.dispatch('logInUser', { email: this.user.email, pass: this.user.password})
+          
+      }
+    },
+    validate() {
+      this.vlidationErrors = {
+        email: false,
+        password: false,
+        repeatPassword: false,
+        name: false,
+        street: false,
+        city: false,
+        zip: false
+      }
+      let passed = true
+      if(this.user.email==="") {
+        passed = false
+        this.vlidationErrors.email = true
+      }
+      if(this.user.password==="") {
+        passed = false
+        this.vlidationErrors.password = true
+      }
+      if(this.user.repeatPassword==="") {
+        passed = false
+        this.vlidationErrors.repeatPassword = true
+      }
+      if(this.user.name==="") {
+        passed = false
+        this.vlidationErrors.name = true
+      }
+      if(this.user.adress.street==="") {
+        passed = false
+        this.vlidationErrors.street = true
+      }
+      if(this.user.adress.city==="") {
+        passed = false
+        this.vlidationErrors.city = true
+      }
+      if(this.user.adress.zip==="") {
+        passed = false
+        this.vlidationErrors.zip = true
+      }
+      return passed
     }
   },
   created() {
@@ -203,5 +286,8 @@ input:focus, textarea:focus {
 }
 .userCreated button:active {
   transform: scale(0.9);
+}
+.red {
+  color: red;
 }
 </style>

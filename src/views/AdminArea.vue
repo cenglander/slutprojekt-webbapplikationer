@@ -1,91 +1,96 @@
 <template>
   <div class="admin-area-container">
     <Header :CurrentLocation="'Admin Area'"/>
-    <button class="create-button" @click="createMode">
-      Create Product
-    </button>
-    <div class="create-product-container" v-if="activateCreateMode">
-      <div class="create-product">
-        <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
-        @click="exitCreateMode">
-        <div class="product-input-container">
-          <input type="text" v-model="product.title" placeholder="title" />
-          <input type="number" v-model="product.price" placeholder="price" />
-          <input type="text" v-model="product.shortDesc" placeholder="Short description" />
-          <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
-          <button class="add-button" @click="createProduct">Add Product</button>
-        </div>
-        <div class="product-in-create-container">
-          <article class="product-in-create">
-          <img v-if="displayImgCreate" v-bind:src="require('@/assets/img/' + product.imgFile)" />
-        
-        </article>
-        <select v-on:change="showImgCreate" v-model="product.imgFile">
-          <option value="hoodie-ash.png">hoodie-ash.png</option>
-          <option value="hoodie-fire.png">hoodie-fire.png</option>
-          <option value="hoodie-ocean.png">hoodie-ocean.png</option>
-          <option value="skateboard-generic.png">skateboard-generic.png</option>
-          <option value="skateboard-greta.png">skateboard-greta.png</option>
-          <option value="wheel-rocket.png">wheel-rocket.png</option>
-          <option value="wheel-spinner.png">wheel-spinner.png</option>
-          <option value="wheel-wave.png">wheel-wave.png</option>
-        </select>
-        </div>
-      </div>
-    </div>
-    <div class="update-product-container" v-if="activateUpdateMode">
-      <div class="update-product">
-        <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
-        @click="exitUpdateMode">
-        <div class="product-input-container">
-        <input type="text" v-model="updateProductForm.title" placeholder="title" />
-        <input type="number" v-model="updateProductForm.price" placeholder="price" />
-        <input type="text" v-model="updateProductForm.shortDesc" placeholder="Short description" />
-        <textarea type="text" v-model="updateProductForm.longDesc" placeholder="Long description"></textarea>
-        <button class="update-button" @click="updateProduct">Update Product</button>
-        </div>
-        <div class="product-in-update-container">
-          <article class="product-in-update">
-          <img
-          v-if="displayImgUpdate"
-          v-bind:src="require('@/assets/img/' + updateProductForm.imgFile)"
-          /> 
-        </article>
-        <select v-model="updateProductForm.imgFile">
-          <option value="hoodie-ash.png">hoodie-ash.png</option>
-          <option value="hoodie-fire.png">hoodie-fire.png</option>
-          <option value="hoodie-ocean.png">hoodie-ocean.png</option>
-          <option value="skateboard-generic.png">skateboard-generic.png</option>
-          <option value="skateboard-greta.png">skateboard-greta.png</option>
-          <option value="wheel-rocket.png">wheel-rocket.png</option>
-          <option value="wheel-spinner.png">wheel-spinner.png</option>
-          <option value="wheel-wave.png">wheel-wave.png</option>
-        </select>
+    <div class="isAdmin" v-if="roleIsUser">
+      <button class="create-button" @click="createMode">
+        Create Product
+      </button>
+      <div class="create-product-container" v-if="activateCreateMode">
+        <div class="create-product">
+          <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
+          @click="exitCreateMode">
+          <div class="product-input-container">
+            <input type="text" v-model="product.title" placeholder="title" />
+            <input type="number" v-model="product.price" placeholder="price" />
+            <input type="text" v-model="product.shortDesc" placeholder="Short description" />
+            <textarea type="text" v-model="product.longDesc" placeholder="Long description"></textarea>
+            <button class="add-button" @click="createProduct">Add Product</button>
+          </div>
+          <div class="product-in-create-container">
+            <article class="product-in-create">
+            <img v-if="displayImgCreate" v-bind:src="require('@/assets/img/' + product.imgFile)" />
+          
+          </article>
+          <select v-on:change="showImgCreate" v-model="product.imgFile">
+            <option value="hoodie-ash.png">hoodie-ash.png</option>
+            <option value="hoodie-fire.png">hoodie-fire.png</option>
+            <option value="hoodie-ocean.png">hoodie-ocean.png</option>
+            <option value="skateboard-generic.png">skateboard-generic.png</option>
+            <option value="skateboard-greta.png">skateboard-greta.png</option>
+            <option value="wheel-rocket.png">wheel-rocket.png</option>
+            <option value="wheel-spinner.png">wheel-spinner.png</option>
+            <option value="wheel-wave.png">wheel-wave.png</option>
+          </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="product-container">
-      <article class="product" v-for="product in getProductList" v-bind:key="product._id">
-        <div class="product-frame">
-          <div class="icons">
+      <div class="update-product-container" v-if="activateUpdateMode">
+        <div class="update-product">
+          <img class="exit" :src="require('@/assets/img/close-circle-outline.svg')"
+          @click="exitUpdateMode">
+          <div class="product-input-container">
+          <input type="text" v-model="updateProductForm.title" placeholder="title" />
+          <input type="number" v-model="updateProductForm.price" placeholder="price" />
+          <input type="text" v-model="updateProductForm.shortDesc" placeholder="Short description" />
+          <textarea type="text" v-model="updateProductForm.longDesc" placeholder="Long description"></textarea>
+          <button class="update-button" @click="updateProduct">Update Product</button>
+          </div>
+          <div class="product-in-update-container">
+            <article class="product-in-update">
             <img
-              :src="require('@/assets/img/create-outline.svg')"
-              @click="updateMode(product)"
-            />
-            <img :src="require('@/assets/img/trash-outline.svg')" @click="deleteProduct(product)" />
-          </div>
-          <div class="product-img">
-            <img v-bind:src="require('@/assets/img/' + product.imgFile)" />
+            v-if="displayImgUpdate"
+            v-bind:src="require('@/assets/img/' + updateProductForm.imgFile)"
+            /> 
+          </article>
+          <select v-model="updateProductForm.imgFile">
+            <option value="hoodie-ash.png">hoodie-ash.png</option>
+            <option value="hoodie-fire.png">hoodie-fire.png</option>
+            <option value="hoodie-ocean.png">hoodie-ocean.png</option>
+            <option value="skateboard-generic.png">skateboard-generic.png</option>
+            <option value="skateboard-greta.png">skateboard-greta.png</option>
+            <option value="wheel-rocket.png">wheel-rocket.png</option>
+            <option value="wheel-spinner.png">wheel-spinner.png</option>
+            <option value="wheel-wave.png">wheel-wave.png</option>
+          </select>
           </div>
         </div>
-        <article class="product-info">
-          <p>{{product.title}}</p>
-          <p>{{product.shortDesc}}</p>
-          <p>
-            <strong>{{product.price}} kr inkl moms</strong>
-          </p>
+      </div>
+      <div class="product-container">
+        <article class="product" v-for="product in getProductList" v-bind:key="product._id">
+          <div class="product-frame">
+            <div class="icons">
+              <img
+                :src="require('@/assets/img/create-outline.svg')"
+                @click="updateMode(product)"
+              />
+              <img :src="require('@/assets/img/trash-outline.svg')" @click="deleteProduct(product)" />
+            </div>
+            <div class="product-img">
+              <img v-bind:src="require('@/assets/img/' + product.imgFile)" />
+            </div>
+          </div>
+          <article class="product-info">
+            <p>{{product.title}}</p>
+            <p>{{product.shortDesc}}</p>
+            <p>
+              <strong>{{product.price}} kr inkl moms</strong>
+            </p>
+          </article>
         </article>
-      </article>
+      </div>
+    </div>
+    <div class="noAdmin" v-else>
+      <h1>NOPE</h1>
     </div>
   </div>
 </template>
@@ -126,6 +131,13 @@ export default {
     },
     getCurrentUser() {
       return this.$store.state.currentUser;
+    },
+    roleIsUser() {
+      if (this.$store.state.currentUser != null) {
+        return this.$store.state.currentUser.role === "admin"
+      }  else {
+        return false
+      } 
     }
   },
   methods: {
@@ -412,5 +424,9 @@ export default {
     &:focus {
       transform: scale(0.92);
     }
+}
+.noAdmin {
+  width: 1000px;
+  height:80vh;
 }
 </style>
